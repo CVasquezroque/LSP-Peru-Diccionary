@@ -1,0 +1,618 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Backend Implementation &#8212; Diccionario LSP al Español</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Backend_SignSearch';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Inference" href="Inference.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Diccionario LSP al Español</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Welcome!👋
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DocumentationOverview.html">Documentation Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Language Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Annotation and Isolating Sign Language Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConnectingPoints.html">ConnectingPoints</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Training Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ModelOverview.html">Sign Language Recognition Model Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="HowItWorks.html">How it Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Search</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Deploy_TextSearch.html">Deployment of Text Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Backend_TextSearch.html">Backend Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Inference.html">Inference</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Backend Implementation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/issues/new?title=Issue%20on%20page%20%2Fdocs/Backend_SignSearch.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/Backend_SignSearch.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Backend Implementation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-lambda-implementation">AWS Lambda Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-function-py">lambda_function.py</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#react-implementation">React Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-usesignsearchservice">Integration with <code class="docutils literal notranslate"><span class="pre">useSignSearchService</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="backend-implementation">
+<h1>Backend Implementation<a class="headerlink" href="#backend-implementation" title="Permalink to this heading">#</a></h1>
+<p>For backend connections between the web application and Sign Search functionalities, a linkage between AWS Sagemaker and the website needs to be established. AWS Lambda plays a pivotal role in this process by invoking Sagemaker to send keypoints and subsequently receiving prediction results. This interaction is orchestrated to ensure seamless communication between the various services.</p>
+<section id="aws-lambda-implementation">
+<h2>AWS Lambda Implementation<a class="headerlink" href="#aws-lambda-implementation" title="Permalink to this heading">#</a></h2>
+<p>Note: The following description covers two scenarios: one involving video transmission and another focusing on keypoints, as video transmission was previously employed.</p>
+<p>AWS Lambda Name: sagemaker-invoker</p>
+<p align="center">
+  <img src="./assets/Lambda_sagemaker.jpg" alt="lambda folder" width="780">
+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="c1"># grab environment variables</span>
+<span class="n">ENDPOINT_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;ENDPOINT_NAME&#39;</span><span class="p">]</span>
+<span class="n">KEYPOINT_ENDPOINT_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;KEYPOINT_ENDPOINT_NAME&#39;</span><span class="p">]</span>
+<span class="n">runtime</span><span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;runtime.sagemaker&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    
+    <span class="c1">#print(&quot;Received event: &quot; + json.dumps(event, indent=2))</span>
+    
+    <span class="c1"># Obtén el nombre del archivo recién colocado en el bucket</span>
+    
+    <span class="k">if</span> <span class="s1">&#39;video&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+        <span class="n">file_key</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;video&#39;</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">file_key</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before runtine.invoke_endpoint&quot;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">invoke_endpoint</span><span class="p">(</span><span class="n">EndpointName</span><span class="o">=</span><span class="n">ENDPOINT_NAME</span><span class="p">,</span>
+                                           <span class="n">ContentType</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+                                           <span class="c1">#ContentType=&#39;application/x-s3-object-key&#39;,</span>
+                                           <span class="n">Accept</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+                                           <span class="n">Body</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;uniqueName&#39;</span><span class="p">:</span> <span class="n">file_key</span><span class="p">})</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;Body&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+  
+    <span class="k">elif</span> <span class="s1">&#39;keypoints&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+        <span class="n">file_key</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;keypoints&#39;</span><span class="p">]</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">invoke_endpoint</span><span class="p">(</span><span class="n">EndpointName</span><span class="o">=</span><span class="n">KEYPOINT_ENDPOINT_NAME</span><span class="p">,</span>
+                                           <span class="n">ContentType</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+                                           <span class="n">Accept</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+                                           <span class="n">Body</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;keypoints_list&#39;</span><span class="p">:</span> <span class="n">file_key</span><span class="p">})</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;Body&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+        
+    <span class="k">elif</span> <span class="s1">&#39;default&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;instances&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;gloss&#39;</span><span class="p">:</span> <span class="s1">&#39;AYUDAR&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;gloss&#39;</span><span class="p">:</span> <span class="s1">&#39;PENSAR&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;gloss&#39;</span><span class="p">:</span> <span class="s1">&#39;GUARDAR&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;gloss&#39;</span><span class="p">:</span> <span class="s1">&#39;DINERO&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;gloss&#39;</span><span class="p">:</span> <span class="s1">&#39;CAMINAR-PERSONA&#39;</span><span class="p">}]}</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">error_message</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;no ha mandado el formato correcto&quot;</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+            <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
+        <span class="p">}</span>
+        
+  
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After invoke_endpoint&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RESULT&quot;</span><span class="p">,</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;instances&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">pred</span>
+</pre></div>
+</div>
+<section id="lambda-function-py">
+<h3>lambda_function.py<a class="headerlink" href="#lambda-function-py" title="Permalink to this heading">#</a></h3>
+<p>Upon invocation, the function expects an event and context object as parameters. It first retrieves environment variables ENDPOINT_NAME and KEYPOINT_ENDPOINT_NAME using the os.environ dictionary, which are expected to hold the names of the SageMaker endpoints to be invoked.</p>
+<p>The Lambda function’s core functionality is driven by the lambda_handler function. It examines the incoming event object to determine whether it contains information related to a video or keypoints. If the event contains a ‘video’ key, the function assumes that it is dealing with a video file and proceeds to invoke the specified SageMaker endpoint (ENDPOINT_NAME). It constructs an input payload containing the uniqueName of the video file and sends it to the SageMaker endpoint. The response is then decoded and parsed as JSON to retrieve the prediction result.</p>
+<p>Similarly, if the event contains a ‘keypoints’ key, the function assumes it’s dealing with keypoints data. It invokes the corresponding SageMaker endpoint (KEYPOINT_ENDPOINT_NAME) using the keypoints data as input. The process is identical to the video scenario.</p>
+<p>If the event doesn’t match either of these scenarios, the function returns an error message indicating an incorrect format.</p>
+</section>
+</section>
+<section id="react-implementation">
+<h2>React Implementation<a class="headerlink" href="#react-implementation" title="Permalink to this heading">#</a></h2>
+<p>Within the React Implementation, navigate to the dedicated <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/tree/main/website/dev_stratlabs/src/features/sign-search" target="_blank"><code class="docutils literal notranslate"><span class="pre">sign-search</span></code></a> directory. Here, the focus is on <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/tree/main/website/dev_stratlabs/src/features/sign-search/views" target="_blank"><code class="docutils literal notranslate"><span class="pre">SignSearch.jsx</span></code></a>, responsible for constructing the SignSearch page on the website. This component interfaces with the <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/sign-search/sign-search.services.js" target="_blank"><code class="docutils literal notranslate"><span class="pre">sign-search.services.js</span></code></a> file, which hosts the <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/sign-search/sign-search.services.js#L8-L13" target="_blank"><code class="docutils literal notranslate"><span class="pre">useSignSearchService</span></code></a> module.</p>
+<section id="integration-with-usesignsearchservice">
+<h3>Integration with <code class="docutils literal notranslate"><span class="pre">useSignSearchService</span></code><a class="headerlink" href="#integration-with-usesignsearchservice" title="Permalink to this heading">#</a></h3>
+<p>The purpose of the <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/sign-search/sign-search.services.js" target="_blank"><code class="docutils literal notranslate"><span class="pre">useSignSearchService</span></code></a> module is twofold: it facilitates the uploading of landmarks data and the retrieval of LSP (Lengua de Señas Peruana) gloss-related search results. This module operates within the broader system, leveraging AWS services and utility functions to achieve its functionality.</p>
+<p>The core function, <code class="docutils literal notranslate"><span class="pre">uploadLandmarks</span></code>, encapsulates the entire workflow. It accepts an array of landmarks data, representing various types of body landmarks extracted from images or videos. Within the function, an instance of the AWS Lambda service is instantiated using the AWS.Lambda() constructor. The provided landmarks data is meticulously formatted into a suitable JSON structure and then bundled within the Payload parameter of the AWS Lambda invocation.</p>
+<p>Upon invoking the Lambda function asynchronously, the response undergoes processing to identify recognized LSP glosses. For each recognized gloss, the module queries the <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/sign-search/text-search.services.js#L18-L19" target="_blank"><code class="docutils literal notranslate"><span class="pre">textSearchService</span></code></a> using the provided gloss term and the AiResultSearch index type. The resulting search outcomes are then attached to the respective item’s properties.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">useSignSearchService</span></code> module harmoniously integrates with both React components and AWS services. It makes use of the <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/1151ccc7ff2f4d7635c156e719739b67ad18616e/website/dev_stratlabs/src/constants.js#L7C2-L7C2" target="_blank"><code class="docutils literal notranslate"><span class="pre">AWS_CONFIG.LAMBDA_SAGEMAKER_INVOKER</span></code></a> configuration to enable the Lambda function targeted for invocations. This module serves as a prime example of connecting a React application with AWS Lambda, facilitating the seamless integration of LSP landmarks data processing and search result retrieval.</p>
+<p>It’s worth noting that you can locate the AWS Configuration for the Sagemaker Invoker Endpoint within the <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/constants.js" target="_blank"><code class="docutils literal notranslate"><span class="pre">constants.js</span></code></a> file.</p>
+<!-- ## React Implementation
+
+In the React Implementation, in the [sign-search](https://github.com/JoeNatan30/SpanishToPSLTranslationService/tree/main/website/dev_stratlabs/src/features/sign-search), we should look for SignSearch.jsx (https://github.com/JoeNatan30/SpanishToPSLTranslationService/tree/main/website/dev_stratlabs/src/features/sign-search/views) , where it build the SignSearch Page in the website, and it calls the sign-search.services.js file, where useSignSearchService Module is located.
+
+**useSignSearchService**
+
+It purpose is uploading landmarks data and retrieving LSP(Lengua de Señas Peruana) gloss-related search results. This module operates as part of a larger system, leveraging AWS services and utility functions.
+
+The primary function, uploadLandmarks, encapsulates the workflow. It accepts an array of landmarks data, which represents different types of body landmarks extracted from images or videos. Inside the function, an instance of the AWS Lambda service is created using the AWS.Lambda() constructor. The provided landmarks data is formatted into a suitable JSON structure and packaged into the Payload parameter of the AWS Lambda invocation.
+
+Upon invoking the Lambda function asynchronously, the response is processed to identify recognized ASL glosses. For each recognized gloss, the module queries the textSearchService using the provided gloss term and the AiResultSearch index type. The search results are then attached to the processed item's properties.
+
+The useSignSearchService module is integrated with React components and AWS services. It employs the **AWS_CONFIG.LAMBDA_SAGEMAKER_INVOKER** configuration to specify the target Lambda function for the invocations. This module demonstrates how to connect a React application with AWS Lambda, enabling the seamless integration of ASL landmarks data processing and search result retrieval.
+
+You will find the AWS Configuration for the Sagemaker Invoker Endpoint in ./src/constants.js file  --></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Inference.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Inference</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-lambda-implementation">AWS Lambda Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-function-py">lambda_function.py</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#react-implementation">React Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-usesignsearchservice">Integration with <code class="docutils literal notranslate"><span class="pre">useSignSearchService</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Dictionary LSP to Spanish Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

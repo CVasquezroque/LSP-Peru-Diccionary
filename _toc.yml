@@ -1,5 +1,5 @@
 format: jb-book
-root: docs/README
+root: README
 parts:
 - caption: Getting Started
   chapters:
@@ -13,13 +13,12 @@ parts:
   - file: docs/ModelOverview
 - caption: Deployment
   chapters:
-  - file: docs/DeployOverview
   - file: docs/HowItWorks
-- caption: Spanish to Sign Search
+- caption: Text Search
   chapters:
   - file: docs/Deploy_TextSearch
   - file: docs/Backend_TextSearch
-- caption: Sign to Spanish Search
+- caption: Sign Search
   chapters:
   - file: docs/Inference
   - file: docs/Backend_SignSearch

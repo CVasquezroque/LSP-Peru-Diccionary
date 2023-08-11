@@ -1,69 +1,23 @@
 # Sign Language Recognition Model Overview
 
-![Top Banner](https://data.matsworld.io/signlanguagerecognition/GitHub_banner.png)
+For the SLR model training stage, a pre-existing model developed by Matyáš Boháček and Marek Hrúz from the [SPOTER](https://github.com/matyasbohacek/spoter) repository was used as a starting point. However, several modifications were made to adapt the model to the specific dataset being worked on.
 
-> by **[Matyáš Boháček](https://github.com/matyasbohacek)** and **[Marek Hrúz](https://github.com/mhruz)**, University of West Bohemia <br>
-> Should you have any questions or inquiries, feel free to contact us [here](mailto:matyas.bohacek@matsworld.io).
+The following files were modified:
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/sign-pose-based-transformer-for-word-level/sign-language-recognition-on-lsa64)](https://paperswithcode.com/sota/sign-language-recognition-on-lsa64?p=sign-pose-based-transformer-for-word-level)
+1. `./dataset/Lsp_dataset.py`: The keypoints were adapted to the output provided by Mediapipe. This adaptation was done from the data loading in Connecting Points to the data output. Although it is uncertain whether the same keypoints as SPOTER were used, the data augmentation structure remains the same as in SPOTER, but it was adjusted to work with the appropriate keypoints from Mediapipe.
 
-Repository accompanying the [Sign Pose-based Transformer for Word-level Sign Language Recognition](https://openaccess.thecvf.com/content/WACV2022W/HADCV/html/Bohacek_Sign_Pose-Based_Transformer_for_Word-Level_Sign_Language_Recognition_WACVW_2022_paper.html) paper, where we present a novel architecture for word-level sign language recognition based on the Transformer model. We designed our solution with low computational cost in mind, since we see egreat potential in the usage of such recognition system on hand-held devices. We introduce multiple original augmentation techniques tailored for the task of sign language recognition and propose a unique normalization scheme based on sign language linguistics.
+2. `./normalization/body_normalization.py` and `./normalization/hand_normalization.py`: The structure of these files remains similar to SPOTER, but the keypoints were adjusted to work with Mediapipe. The normalization was changed from using the neck distance to using the shoulder distance, which may require further review. However, it should be noted that there are studies showing that normalizing by either neck distance or shoulder distance is acceptable.
 
-![Alt Text](http://spoter.signlanguagerecognition.com/img/architecture_github.gif)
+3. `./spoter/utils.py`: Adapted to work with WandB and adjusted to meet the specific reporting needs of the project.
 
-## Get Started
+4. `./spoter/spoter.py`: The SPOTER model has undergone several changes, but in the latest version, it was made to closely resemble the original. The only variations made were related to the hyperparameters.
 
-First, make sure to install all necessary dependencies using:
+5. `./train.py`: This file has undergone significant changes and essentially represents a custom implementation, building on the work of SPOTER as a foundation.
 
-```shell
-pip install -r requirements.txt
-```
+Finally, model.pth is saved to be used in the inference as part of the deployment step
+<p align="center">
+  <img src="./assets/SPOTER.png" alt="SPOTER" width="738">
+</p>
 
-To train the model, simply specify the hyperparameters and run the following:
 
-```
-python -m train
-  --experiment_name [str; name of the experiment to name the output logs and plots]
-  
-  --epochs [int; number of epochs]
-  --lr [float; learning rate]
-  
-  --training_set_path [str; path to the csv file with training set's skeletal data]
-  --validation_set_path [str; path to the csv file with validation set's skeletal data]
-  --testing_set_path [str; path to the csv file with testing set's skeletal data]
-```
-
-If either the validation or testing sets' paths are left empty, these corresponding metrics will not be calculated. We also provide out-of-the box parameter to split the validation set as a desired split of the training set while preserving the label distribution for datasets without author-specified splits. These and many other specific hyperparameters with their descriptions can be found in the [train.py](https://github.com/matyasbohacek/spoter/blob/main/train.py) file. All of them are provided a default value we found to be working well in our experiments.
-
-## Data
-
-As SPOTER works on top of sequences of signers' skeletal data extracted from videos, we wanted to eliminate the computational demands of such annotation for each training run by pre-collecting this. For this reason and reproducibility, we are open-sourcing this data for WLASL100 and LSA64 datasets along with the repository. You can find the data [here](https://github.com/matyasbohacek/spoter/releases/tag/supplementary-data).
-
-![Alt Text](http://spoter.signlanguagerecognition.com/img/datasets_overview.gif)
-
-## License
-
-The **code** is published under the [Apache License 2.0](https://github.com/matyasbohacek/spoter/blob/main/LICENSE) which allows for both academic and commercial use if  relevant License and copyright notice is included, our work is cited and all changes are stated.
-
-The accompanying skeletal data of the [WLASL](https://arxiv.org/pdf/1910.11006.pdf) and [LSA64](https://core.ac.uk/download/pdf/76495887.pdf) datasets used for experiments are, however, shared under the [Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/) license allowing only for non-commercial usage.
-
-## Citation
-
-If you find our work relevant, build upon it or compare your approaches with it, please cite our work as stated below:
-
-```
-@InProceedings{Bohacek_2022_WACV,
-    author    = {Boh\'a\v{c}ek, Maty\'a\v{s} and Hr\'uz, Marek},
-    title     = {Sign Pose-Based Transformer for Word-Level Sign Language Recognition},
-    booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) Workshops},
-    month     = {January},
-    year      = {2022},
-    pages     = {182-191}
-}
-```
-
-## Acknowledgements
-
-We would hereby like to thank [NF Cesta ke vzdělání](https://cestakevzdelani.praha.eu/) for sponsoring the student mobility-related costs, which allowed for the presentation and publication of this work.
-
-[![CkV Logo](https://cestakevzdelani.praha.eu/public/3/98/ab/1408502_268110_nadace_logo.png)](https://cestakevzdelani.praha.eu/)
+It is important to note that while the SLR model is based on the SPOTER repository, the modifications and adaptations mentioned above were essential to ensure its suitability for the specific sign language dataset being used in the project.
