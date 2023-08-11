@@ -1,0 +1,605 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Annotation and Isolating Sign Language Videos &#8212; Diccionario LSP al Español</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/preprocessing';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ConnectingPoints" href="ConnectingPoints.html" />
+    <link rel="prev" title="Documentation Overview" href="DocumentationOverview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Diccionario LSP al Español</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Welcome!👋
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DocumentationOverview.html">Documentation Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Language Processing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Annotation and Isolating Sign Language Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConnectingPoints.html">ConnectingPoints</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Training Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ModelOverview.html">Sign Language Recognition Model Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="HowItWorks.html">How it Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Search</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Deploy_TextSearch.html">Deployment of Text Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Backend_TextSearch.html">Backend Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Inference.html">Inference</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Backend_SignSearch.html">Backend Implementation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/issues/new?title=Issue%20on%20page%20%2Fdocs/preprocessing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/preprocessing.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Annotation and Isolating Sign Language Videos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation-of-signs">Annotation of Signs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-preparation">Video Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-transforming-elan-to-srt-files">Step 1: Transforming ELAN to SRT Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-video-extraction">Step 2: Video Extraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-video-cropping">Step 3: Video Cropping</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="annotation-and-isolating-sign-language-videos">
+<h1>Annotation and Isolating Sign Language Videos<a class="headerlink" href="#annotation-and-isolating-sign-language-videos" title="Permalink to this heading">#</a></h1>
+<p>In this stage, both video preparation and the annotation of signs corresponding to the videos are performed, as shown in the following workflow.</p>
+<p align="center">
+  <img src="./assets/Preprocessing.png" alt="Preprocessing" width="738">
+</p>
+<section id="annotation-of-signs">
+<h2>Annotation of Signs<a class="headerlink" href="#annotation-of-signs" title="Permalink to this heading">#</a></h2>
+<p>For the annotation of videos, we utilized the ELAN video annotation tool, where previously agreed-upon glosses for the words described in each example sentence from the PUCP305 database were annotated. The PUCP305 database contains multiple examples of sentences, each containing several signs for different words. The task was to create an Isolated Sign Language (ISL) video database. The annotation of glosses, along with their corresponding timeframes, served as the basis for creating the ISL database, as illustrated in the image below. This task involved meticulous work from the entire linguistic team and the Deaf community to create a dataset that accurately represents how communication occurs within the community, requiring in-depth study to define the signs’ glosses correctly.</p>
+<p align="center">
+  <img src="./assets/ELAN.jpg" alt="Annotation ELAN" width="560">
+</p>
+</section>
+<section id="video-preparation">
+<h2>Video Preparation<a class="headerlink" href="#video-preparation" title="Permalink to this heading">#</a></h2>
+<p>Video preparation involved using Python scripts for specific preprocessing tasks, divided into three stages: transforming EAF (ELAN files) into SRT files, extracting all videos from the unprocessed database, and then cropping them based on the timeframes indicated in the SRT files to generate each ISL video. Additionally, if needed, cropping was performed to include only the interpreter’s location (used in previous databases, where the interpreter was not centered in the video, and the video contained content besides the interpreter).</p>
+<section id="step-1-transforming-elan-to-srt-files">
+<h3>Step 1: Transforming ELAN to SRT Files<a class="headerlink" href="#step-1-transforming-elan-to-srt-files" title="Permalink to this heading">#</a></h3>
+<p>The “<a class="reference external" href="http://transformEAFTtoSRT.py">transformEAFTtoSRT.py</a>” script aims to convert ELAN (EAF) files containing gloss annotations into SubRip (SRT) subtitle files and generate a vocabulary count. The script processes all ELAN files found in a specified folder and its subfolders. It reads the gloss annotations from the ELAN files and creates corresponding SRT subtitle files. The script also counts the occurrences of each gloss annotation and generates a vocabulary count, saving it to a CSV file named ‘glosas.csv’.</p>
+</section>
+<section id="step-2-video-extraction">
+<h3>Step 2: Video Extraction<a class="headerlink" href="#step-2-video-extraction" title="Permalink to this heading">#</a></h3>
+<p>The “move_videos.py” script aims to copy video files referenced in ELAN (EAF) files from their original location to a specific destination folder. The script recursively searches for ELAN files with the ‘.eaf’ extension and, for each file found, locates and copies the associated video file. If the video file is not found at the original location, the script looks for it in the linked media list of the ELAN file and corrects the video’s path if necessary before performing the copy. This script ensures that the videos are correctly organized in the destination folder, which facilitates further processing or analysis. Note that the destination folder is typically located within the <a class="reference external" href="https://github.com/gissemari/PeruvianSignLanguage">PeruvianSignLanguage</a> repository in the following structure:</p>
+<!-- En esta etapa se realiza tanto la preparación de los vídeos como la anotación de las señas correspondientes a los vídeos, como se muestra en el flujo a continuación.
+
+Anotación de Señas
+
+Para la anotación de los vídeos se hizo uso de la herramienta de anotación de videos ELAN, donde se anotaron glosas previamente acordadas para las palabras descritas en cada oración ejemplo de la palabra correspondiente de acuerdo a la base de datos PUCP305, es decir, la base de datos cuenta con múltiples ejemplos de oraciones, y en cada oración se tienen múltiples señas de las diferentes palabras, la tarea es crear un base de datos de Isolated Sign Language (ISL) videos, por tanto la anotación de la Glosa en conjunto con los timeframes donde ocurren sirvieron para la creación de ISL database, como se muestra en la siguiente imagen.
+Esta tarea fue un trabajo arduo realizado por todo el equipo de lingüística y la comunidad sorda para crear un conjunto de datos que sean acordes a como se comunican en la comunidad, requiriendo un arduo estudio para definir correctamente las glosas de las señas.
+
+Preparación de Videos
+
+Para la preparación de los vídeos se hizo uso de scripts en python para la realización del preprocesamiento correspondiente, dividido en 3 etapas, transformar los EAF (ELAN files) en archivos SRT , que son mejor manejables para la tarea, extraer todos los vídeos de la base de datos no procesada , y luego recortarlos en función a los timeframes indicados en los archivos SRT para poder generar cada ISL video, asimismo si correspondía se realizaba un recorte de la ubicación del intérprete (utilizado en base de datos anteriores, donde el intérprete no se ubicaba en el centro del vídeo y el vídeo mostraba contenido además del intérprete)
+
+Paso 1: Transformación de ELAN to SRT files
+
+El archivo "transformEAFTtoSRT.py" tiene como objetivo convertir archivos ELAN (EAF) que contienen anotaciones de glosas en archivos de subtítulos SubRip (SRT) y generar un recuento de vocabulario. El script procesa todos los archivos ELAN encontrados en una carpeta especificada y sus subcarpetas. Lee las anotaciones de glosas de los archivos ELAN y crea archivos de subtítulos SRT correspondientes. También cuenta las ocurrencias de cada anotación de glosa y genera un recuento de vocabulario, que se guarda en un archivo CSV llamado 'glosas.csv'. Para utilizar el script, asegúrese de tener instaladas las bibliotecas requeridas y establezca las rutas de entrada y salida según corresponda. Después de ejecutar el script, encontrará los archivos SRT procesados y el recuento de vocabulario en la carpeta de salida especificada.
+
+Paso 2: Extracción de los videos
+
+El archivo "move_videos.py" tiene como objetivo copiar archivos de video referenciados en archivos ELAN (EAF) desde una ubicación original a una ubicación de destino específica. El script recorre una estructura de directorios para buscar archivos ELAN con extensión ".eaf" y, para cada archivo encontrado, busca y copia el archivo de video asociado. Si el archivo de video no se encuentra en la ubicación original, busca en la lista de medios vinculados del archivo ELAN y corrige la ruta del video si es necesario antes de realizar la copia. El script asegura que los videos estén correctamente ubicados en la carpeta de destino, lo que facilita su posterior procesamiento o análisis. Tomar en cuenta, que por lo general la carpeta de destino deberá encontrarse en el repositorio [PeruvianSignLanguage](https://github.com/gissemari/PeruvianSignLanguage) con la siguiente estructura: -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PeruvianSignLanguage
+.
+.
+.
+├── Data
+    ├── PUCP305 [subfolder for PUCP305 database]
+    │   ├── SRT                        [subfolder containing SRT files]
+    │   │   ├── SRT_SEGMENTED_SIGN
+    │   │   │   ├── ABRIR_1.srt
+    │   │   │   └── ABRIR_2.srt
+    │   ├── Videos                      [subfolder containing mp4 files]
+    │   │   ├── Original
+    │   │   │   ├── ABRIR_1.mp4
+    │   │   │   └── ABRIR_2.mp4
+
+</pre></div>
+</div>
+</section>
+<section id="step-3-video-cropping">
+<h3>Step 3: Video Cropping<a class="headerlink" href="#step-3-video-cropping" title="Permalink to this heading">#</a></h3>
+<p>The “<a class="reference external" href="http://cropInterpreterBySRT.py">cropInterpreterBySRT.py</a>” script aims to segment and crop specific video segments based on the annotations provided in the SRT files. It reads the SRT files located in the path specified by “–srtPath” and uses the temporal information from the annotations to identify the start and end times of each segment of interest.</p>
+<p>The script utilizes the <code class="docutils literal notranslate"><span class="pre">pysrt</span></code> library to read the SRT files and extract the start and end times of each annotation. It then uses the <code class="docutils literal notranslate"><span class="pre">cv2</span></code> library to read the original videos located in the path specified by “–rawVideoPath”. For each segment identified in the SRT file, the script crops the corresponding original video, creating a new video that contains only the cropped segment. The segmented videos are saved in the path specified by “–outputVideoPath”.</p>
+<p>The script provides additional options to customize the segmentation, such as setting the width and height of the sign language interpreter in the segmented videos and cropping the video to include only a specific region of interest (using coordinates “x1”, “y1”, “width”, and “height”). Furthermore, the script allows for controlling the speed of the segmented videos (“fpsOutput”) and considering gestures in the output video’s filename.</p>
+<p>It is important to ensure that the SRT files and corresponding video files are located in the paths specified by “–srtPath” and “–rawVideoPath,” respectively. It is assumed that these files are within the <a class="reference external" href="https://github.com/gissemari/PeruvianSignLanguage">PeruvianSignLanguage</a> repository in the “Data” folder.</p>
+<!-- Paso 3: Recorte de los vídeos
+
+
+El archivo "cropInterpreterBySRT.py" tiene como objetivo segmentar y recortar segmentos específicos de videos basándose en las anotaciones proporcionadas en archivos SRT. Para ello, el script lee los archivos SRT ubicados en la ruta especificada por "--srtPath" y utiliza la información temporal de las anotaciones para identificar los momentos de inicio y finalización de cada segmento de interés.
+
+El script utiliza la biblioteca pysrt para leer los archivos SRT y extraer los tiempos de inicio y finalización de cada anotación. Luego, utiliza la biblioteca cv2 para leer los videos de origen ubicados en la ruta especificada por "--rawVideoPath". Posteriormente, para cada segmento identificado en el archivo SRT, el script recorta el video original correspondiente y crea un nuevo video que contiene solo el segmento recortado. Los nuevos videos segmentados se guardan en la ruta especificada por "--outputVideoPath".
+
+El script también proporciona opciones adicionales para personalizar la segmentación, como la posibilidad de establecer el ancho y alto del intérprete de lenguaje de señas en los videos segmentados y la opción de recortar el video para incluir solo una región de interés específica (coordenadas "x1", "y1", "width" y "height"). Además, se puede controlar la velocidad de los nuevos videos segmentados ("fpsOutput") y la opción de considerar el gesto en el nombre de salida del video.
+
+Es importante tener en cuenta que para que el script funcione correctamente, es necesario que los archivos SRT y los archivos de video correspondientes se encuentren en las ubicaciones especificadas por "--srtPath" y "--rawVideoPath", respectivamente. Se supone que estos archivos se encuentran dentro del repositorio [PeruvianSignLanguage](https://github.com/gissemari/PeruvianSignLanguage) en la carpeta "Data". -->
+<!-- ### Repository for cropInterpreterbySRT.py, move_videos.py, transformEAFtoSRT.py
+
+### and for details about annotation process using ELAN software -->
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DocumentationOverview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Documentation Overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ConnectingPoints.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">ConnectingPoints</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation-of-signs">Annotation of Signs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-preparation">Video Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-transforming-elan-to-srt-files">Step 1: Transforming ELAN to SRT Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-video-extraction">Step 2: Video Extraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-video-cropping">Step 3: Video Cropping</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Dictionary LSP to Spanish Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

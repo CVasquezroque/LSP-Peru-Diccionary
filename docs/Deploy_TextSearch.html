@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Deployment of Text Search &#8212; Diccionario LSP al Español</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Deploy_TextSearch';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Backend Implementation" href="Backend_TextSearch.html" />
+    <link rel="prev" title="How it Works" href="HowItWorks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Diccionario LSP al Español</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Welcome!👋
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DocumentationOverview.html">Documentation Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Language Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Annotation and Isolating Sign Language Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConnectingPoints.html">ConnectingPoints</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Training Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ModelOverview.html">Sign Language Recognition Model Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="HowItWorks.html">How it Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Search</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Deployment of Text Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Backend_TextSearch.html">Backend Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Inference.html">Inference</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Backend_SignSearch.html">Backend Implementation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/issues/new?title=Issue%20on%20page%20%2Fdocs/Deploy_TextSearch.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/Deploy_TextSearch.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Deployment of Text Search</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-run-scriptgloss-py-to-obtain-lemmas">Step 1: Run scriptGloss.py to Obtain Lemmas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-run-addingsentences-py-to-add-the-textsentences-information-to-the-csv-file">Step 2: Run addingSentences.py to add the TextSentences information to the csv file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-modify-speed-of-videos">Step 3: Modify Speed of Videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-set-aws-environment-to-interact-through-platform-or-command-line">Step 4: Set AWS Environment to Interact through Platform or Command Line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-integration-with-scripts-for-aws-upload-videos-to-s3">Step 5: Integration with scripts for AWS: upload videos to S3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-integration-with-scripts-for-aws-create-databae-dynamodb">Step 6: Integration with scripts for AWS: Create databae DynamoDB</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="deployment-of-text-search">
+<h1>Deployment of Text Search<a class="headerlink" href="#deployment-of-text-search" title="Permalink to this heading">#</a></h1>
+<p>These scripts describe the pipeline or process to upload videos to the AWS platform to later retrieve them in a Web Dictionary. First define the structure of the database (relational or not relational). In our case, we are using a non relational DB, DynamoDB from AWS and S3 to store the videos. Then, we slow down individual videos of signs cut/segmented from sign sentences videos because front ends seems to have trouble with short videos (even less than a second). Here we explain how to create these scripts and run them to execute the upload.</p>
+<p align="center">
+  <img src="./assets/DynamoDB.png" alt="TextSearch" width="738">
+</p>
+<section id="step-1-run-scriptgloss-py-to-obtain-lemmas">
+<h2>Step 1: Run <a class="reference external" href="http://scriptGloss.py">scriptGloss.py</a> to Obtain Lemmas<a class="headerlink" href="#step-1-run-scriptgloss-py-to-obtain-lemmas" title="Permalink to this heading">#</a></h2>
+<p>To have only one example for each GLOSS, we group all the examples of each gloss and select randomly a video example. To work with gloss, text and lemmas, we use the SPACY library.</p>
+<ol class="arabic">
+<li><p>To run install SPACY, consider using a conda environment</p>
+<p>pip install -U pip setuptools wheel
+pip install -U spacy
+pip install spacy pandas spellchecker
+python -m spacy download es_dep_news_trf</p>
+</li>
+<li><p>Run the script using the command: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scriptGloss.py</span> <span class="pre">--videoPath</span> <span class="pre">videoPath</span></code>, where videoPath is the path were segmented videos are located</p></li>
+<li><p>The script extracts the lemma and other relevant information from the video filenames in the specified directory.</p></li>
+<li><p>It exports an intermediate file <code class="docutils literal notranslate"><span class="pre">lemmaPUCP305.csv</span></code> with the original raw gloss, lemma, same lemma flag, path, and sentence video for each gloss.</p></li>
+</ol>
+</section>
+<section id="step-2-run-addingsentences-py-to-add-the-textsentences-information-to-the-csv-file">
+<h2>Step 2: Run <a class="reference external" href="http://addingSentences.py">addingSentences.py</a> to add the TextSentences information to the csv file<a class="headerlink" href="#step-2-run-addingsentences-py-to-add-the-textsentences-information-to-the-csv-file" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Run the script using <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">addingSentences.py</span></code></p></li>
+<li><p>The script will add the TextSentences column to a csv file <code class="docutils literal notranslate"><span class="pre">lemmaPUCP305-reviewed.csv</span></code> and may generate a <code class="docutils literal notranslate"><span class="pre">error_log.txt</span></code> if any gloss has errors at their folder name</p></li>
+</ol>
+</section>
+<section id="step-3-modify-speed-of-videos">
+<h2>Step 3: Modify Speed of Videos<a class="headerlink" href="#step-3-modify-speed-of-videos" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Create a list of files and paths in an CSV (or iterate over a folder structure with os.walk(path))</p></li>
+<li><p>The command to modify videos is ffmpeg, visit the official FFmpeg website: <a class="reference external" href="https://ffmpeg.org/">https://ffmpeg.org/</a>, to download.</p></li>
+<li><p>Run <a class="reference external" href="http://slowDownVideos.py">slowDownVideos.py</a>, a script that exports in a sh file with a list of ffmpeg commands for each of the videos in the folders specified in a CSV (once more here instead of the list in the CSV file, we can iterate over a folder structure).</p></li>
+<li><p>Run <a class="reference external" href="http://slowDownVideos.sh">slowDownVideos.sh</a></p>
+<p>ffmpeg -i listo_1534 -filter:v “setpts=2.0*PTS” listo_output.mp4</p>
+</li>
+</ol>
+<p>where setpts is the parameter to control the speed, i.e., a value of 2 make it twice slower.</p>
+</section>
+<section id="step-4-set-aws-environment-to-interact-through-platform-or-command-line">
+<h2>Step 4: Set AWS Environment to Interact through Platform or Command Line<a class="headerlink" href="#step-4-set-aws-environment-to-interact-through-platform-or-command-line" title="Permalink to this heading">#</a></h2>
+<p>These steps can either be executed from the AWS platform or by command line through AWS API. We do a combination. To execute from the command line, each user needs an access and secret key. Create access key and secret key. Some info <a class="reference external" href="https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html">here</a></p>
+<ol class="arabic">
+<li><p>Installthe AWS CLI by referring to the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">installation guide</a>.</p></li>
+<li><p>Check if the AWS CLI is installed by running the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>aws<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>Configure the AWS credentials to use the AWS CLI by following the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">configuration guide</a></p></li>
+</ol>
+</section>
+<section id="step-5-integration-with-scripts-for-aws-upload-videos-to-s3">
+<h2>Step 5: Integration with scripts for AWS: upload videos to S3<a class="headerlink" href="#step-5-integration-with-scripts-for-aws-upload-videos-to-s3" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Log in to AWS console, go to S3 Console.</p></li>
+<li><p>Create a bucket. In our case we store individual or isolated signs in the bucket ‘isolatedsigns’, and the sentences in ‘sentencesigns’. If you can not see it, you can create another bucket.</p></li>
+<li><p>Create/update a python file (<a class="reference external" href="http://uploadS3boto3.py">uploadS3boto3.py</a>) that uses the boto AWS library. The main function is s3_client.upload_file(file_name, bucket,object_name).</p></li>
+<li><p>Check or set the bucket variable to the name of your S3 buckets in the python script: <code class="docutils literal notranslate"><span class="pre">bucket</span> <span class="pre">=</span> <span class="pre">'test-isolatedsigns'</span></code> and <code class="docutils literal notranslate"><span class="pre">bucketSentence</span> <span class="pre">=</span> <span class="pre">'test-sentencesigns'</span></code></p></li>
+<li><p>Run the following command to execute the script: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">uploadS3boto.py</span></code></p></li>
+<li><p>The script will start uploading the videos to the specified S3 bucket. The progress and any errors encountered during the upload process will be displayed in the terminal.</p></li>
+<li><p>Once the script completes, you can check your S3 bucket in the AWS console to verify that the videos have been successfully uploaded.</p></li>
+</ol>
+<!-- 4. Another option: the file to produce with they python script in the previous stage (step 3), should have this format:
+
+	aws s3api put-object --bucket isolatedsigns --body C:\Users\Gissella_BejaranoNic\Documents\PeruvianSignLanguage\Data\testS3\[fileName] --key [lemma]
+
+	Create this script for only 3-5 files, and test it by running the .sh (executable file), you might need to give execution permissions.
+
+	Run: sh uploadS3.sh -->
+</section>
+<section id="step-6-integration-with-scripts-for-aws-create-databae-dynamodb">
+<h2>Step 6: Integration with scripts for AWS: Create databae DynamoDB<a class="headerlink" href="#step-6-integration-with-scripts-for-aws-create-databae-dynamodb" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Create/update the <a class="reference external" href="http://createItemsDynamo.py">createItemsDynamo.py</a> to upload batches of maximum 25 items. The main function receives a json file with the different items, this is how DynamoDB create, updates or remove items.</p></li>
+<li><p>Review the code and make sure the following variables are set correctly:</p>
+<ul class="simple">
+<li><p>path: The path to the directory containing the video files or the CSV file with the video information.</p></li>
+<li><p>dictTemplate: The template dictionary for creating DynamoDB items. Ensure that the keys match the attribute names in your DynamoDB table.</p></li>
+</ul>
+</li>
+<li><p>If needed, modify the code to extract the relevant information from your video files or CSV file. Update the dictActual dictionary accordingly to include the desired attributes and values (For example adding the Webname)</p></li>
+</ol>
+<p>Note: If you need to update <code class="docutils literal notranslate"><span class="pre">lemmaPUCP305-reviewed.csv</span></code> adding a column make sure it is updated in the dictActual dictionary in the <a class="reference external" href="http://createItemsDynamo.py">createItemsDynamo.py</a></p>
+<ol class="arabic simple" start="4">
+<li><p>Run the following command to execute the script: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">createItemsDynamo.py</span></code></p></li>
+<li><p>The script will read the video files or the CSV file, create DynamoDB items based on the provided template, and batch write the items to DynamoDB.</p></li>
+<li><p>Once the script completes, you can verify the created items in your DynamoDB table using the AWS console.</p></li>
+</ol>
+<!-- 2. Another option: Create a Dynamo table: Dynamodb Standard or Dynamobdb Standard IA
+
+	```
+	aws dynamodb create-table \
+		--table-name MusicCollection \
+		--attribute-definitions AttributeName=Artist,AttributeType=S AttributeName=SongTitle,AttributeType=S \
+		--key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE \
+		--provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
+		
+		
+	aws dynamodb batch-write-item --request-items file://myfile.json
+
+	https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchWriteItem.html
+	https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.batch_write_item
+	https://turbofuture.com/computers/upload-files-aws-s3-and-dynamodb
+
+	``` -->
+<!-- 
+
+
+Gabriel useful links
+
+https://aws.amazon.com/amplify/
+From Gabriel Paredes - AWS to Everyone 10:15 AM
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.Visualizer.ImportCSV.html
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html
+https://aws.amazon.com/es/blogs/aws-spanish/choosing-the-right-dynamodb-partition-key/
+
+
+
+Not useful
+
+Create an access point to be able to run the script. It asks for policy/statement
+
+s3://arn:aws:s3:us-east-1:769818850490:accesspoint/accessdiccionario
+arn:aws:s3:us-east-1:769818850490:accesspoint/accessdiccionario
+accessdiccionario-bttpqeon8hz9jhrtmkut3etz3zysquse1a-s3alias
+
+
+DOES NOT WORK
+
+	{
+	"Sid": "Statement1",
+	"Principal": {},
+	"Effect": "Allow",
+	"Action": [
+		"s3:ListJobs",
+		"s3:ListMultiRegionAccessPoints"
+	],
+	"Resource": []
+}
+
+SH DOES NOT WORK - I HAD TO INSTALL AWS CLI
+
+bash: logInfo: command not found
+curl: Can't open 'C:\Users\Gissella_BejaranoNic\Documents\PeruvianSignLanguage\Data\testS3*'!
+curl: try 'curl --help' or 'curl --manual' for more information
+curl: (26) Failed to open/read local data from file/application
+bash: logInfo: command not found -->
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="HowItWorks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">How it Works</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Backend_TextSearch.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Backend Implementation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-run-scriptgloss-py-to-obtain-lemmas">Step 1: Run scriptGloss.py to Obtain Lemmas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-run-addingsentences-py-to-add-the-textsentences-information-to-the-csv-file">Step 2: Run addingSentences.py to add the TextSentences information to the csv file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-modify-speed-of-videos">Step 3: Modify Speed of Videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-set-aws-environment-to-interact-through-platform-or-command-line">Step 4: Set AWS Environment to Interact through Platform or Command Line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-integration-with-scripts-for-aws-upload-videos-to-s3">Step 5: Integration with scripts for AWS: upload videos to S3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-integration-with-scripts-for-aws-create-databae-dynamodb">Step 6: Integration with scripts for AWS: Create databae DynamoDB</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Dictionary LSP to Spanish Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
