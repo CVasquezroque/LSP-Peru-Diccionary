@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Inference" href="Inference.html" />
-    <link rel="prev" title="Deployment of Text Search" href="Deploy_TextSearch.html" />
+    <link rel="prev" title="Data Processing and Upload Workflow" href="Deploy_TextSearch.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Search</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Deploy_TextSearch.html">Deployment of Text Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deploy_TextSearch.html">Data Processing and Upload Workflow</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Backend Implementation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
@@ -483,16 +483,7 @@ module.exports.buildIAResultsQuery = (word) =&gt; word?{
 <p>The implementation of the “Text Search” feature is organized within the dedicated <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/tree/main/website/dev_stratlabs/src/features/text-search" target="_blank"><code class="docutils literal notranslate"><span class="pre">text-search</span></code></a> directory. This directory houses all the essential components, views, routes, and services required for text-based searches. It is structured into three primary sections: <em>components</em>, <em>views</em>, and <em>support files</em>. Within the components folder, you will find reusable UI elements, including the specific component responsible for AI-based text search functionality. The views folder contains the <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/text-search/views/TextSearch.jsx" target="_blank"><code class="docutils literal notranslate"><span class="pre">TextSearch.jsx</span></code></a> file, where users engage with the <a href="https://dvlsp.link/search-by-text" target="_blank">search feature</a>. The routes associated with this feature are defined in <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/text-search/text-search.routes.js" target="_blank"><code class="docutils literal notranslate"><span class="pre">text-search.routes.js</span></code></a>, ensuring smooth navigation. The feature’s logic is powered by <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/text-search/text-search.services.js" target="_blank"><code class="docutils literal notranslate"><span class="pre">text-search.services.js</span></code></a>, managing the intricate process of conducting text searches. This organized structure promotes code reusability, facilitates the separation of concerns, and streamlines collaborative development efforts.</p>
 <p>The <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/text-search/views/TextSearch.jsx" target="_blank"><code class="docutils literal notranslate"><span class="pre">TextSearch.jsx</span></code></a> component is at the core of the text search implementation. This component handles the interaction with users who input keywords for conducting searches. It effectively utilizes states to manage the search status, messages, and results. It is also equipped to support an autocomplete system, which is currently disabled. Furthermore, it adeptly handles all aspects of search-related actions, encompassing error management and notifications.</p>
 <p>The <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/1151ccc7ff2f4d7635c156e719739b67ad18616e/website/dev_stratlabs/src/features/text-search/views/TextSearch.jsx#L62C10-L62C20" target="_blank"><code class="docutils literal notranslate"><span class="pre">TextSearch</span></code></a> component encapsulates the logic responsible for executing searches when users input a query and activate the “Search” button. The <code class="docutils literal notranslate"><span class="pre">onSearch</span></code> function responds to this event, coordinating the entire search process. This function collaborates with the <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/text-search/text-search.services.js" target="_blank"><code class="docutils literal notranslate"><span class="pre">textSearchService</span></code></a> to execute the search operation, update results and messages based on the outcome, and manage any potential errors.</p>
-<p>In addition to the underlying logic, the component’s JSX code handles rendering the search modal and presenting the results in the form of cards (Card components). The results are mapped using <code class="docutils literal notranslate"><span class="pre">results.map</span></code> and displayed as cards. These results are what users will encounter on the search page.</p>
-<p>To enhance the visual appeal and usability of the user interface, Material Kit 2 (MK2) components for React are employed. These components serve as building blocks for constructing the UI and applying styling to the page’s elements.</p>
-<p>Here’s how the imported components correspond to the code:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">MKBox</span></code>: This component facilitates the creation of flexible containers and the application of styles to various sections of the interface.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MKTypography</span></code>: Designed for rendering text with customized typography styles.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MKButton</span></code>: Utilized for creating buttons with personalized styles.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MKInput</span></code>: Although this component is not explicitly present in the provided code, I assume it’s employed to generate input fields with tailored styles.</p></li>
-</ul>
-<p>In summary, Material Kit 2 components contribute to a visually cohesive and user-friendly interface by providing consistent and visually pleasing design elements.</p>
+<p>In addition to the underlying logic, the component’s JSX code handles rendering the search modal and presenting the results in the form of cards (Card components).</p>
 <section id="integration-with-textsearchservice">
 <h3>Integration with <code class="docutils literal notranslate"><span class="pre">textSearchService</span></code><a class="headerlink" href="#integration-with-textsearchservice" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">TextSearch</span></code> feature seamlessly integrates with the <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/sign-search/sign-search.services.js" target="_blank"><code class="docutils literal notranslate"><span class="pre">textSearchService</span></code></a> service, which is referenced from <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/text-search/text-search.services.js" target="_blank"><code class="docutils literal notranslate"><span class="pre">text-search.services.js</span></code></a>.</p>
@@ -619,7 +610,7 @@ Both query building functions accept a 'word' parameter and use it to create a q
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Deployment of Text Search</p>
+        <p class="prev-next-title">Data Processing and Upload Workflow</p>
       </div>
     </a>
     <a class="right-next"

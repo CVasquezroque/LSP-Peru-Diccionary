@@ -9,8 +9,8 @@
 
 
 [✌️Dictionary LSP](https://www.dvlsp.link) |
-[🗃️PeruSIL Database](https://github.com/gissemari/PeruvianSignLanguage)
-
+[🗃️PeruSIL Database](https://github.com/gissemari/PeruvianSignLanguage) |
+[📄Documentation](https://github.com/gissemari/PeruvianSignLanguage)
 </div>
 
 # Welcome!👋

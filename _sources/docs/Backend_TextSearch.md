@@ -104,18 +104,8 @@ The <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/m
 
 The <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/1151ccc7ff2f4d7635c156e719739b67ad18616e/website/dev_stratlabs/src/features/text-search/views/TextSearch.jsx#L62C10-L62C20" target="_blank">`TextSearch`</a> component encapsulates the logic responsible for executing searches when users input a query and activate the "Search" button. The `onSearch` function responds to this event, coordinating the entire search process. This function collaborates with the <a href="https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/text-search/text-search.services.js" target="_blank">`textSearchService`</a> to execute the search operation, update results and messages based on the outcome, and manage any potential errors.
 
-In addition to the underlying logic, the component's JSX code handles rendering the search modal and presenting the results in the form of cards (Card components). The results are mapped using `results.map` and displayed as cards. These results are what users will encounter on the search page.
+In addition to the underlying logic, the component's JSX code handles rendering the search modal and presenting the results in the form of cards (Card components).
 
-To enhance the visual appeal and usability of the user interface, Material Kit 2 (MK2) components for React are employed. These components serve as building blocks for constructing the UI and applying styling to the page's elements.
-
-Here's how the imported components correspond to the code:
-
-- `MKBox`: This component facilitates the creation of flexible containers and the application of styles to various sections of the interface.
-- `MKTypography`: Designed for rendering text with customized typography styles.
-- `MKButton`: Utilized for creating buttons with personalized styles.
-- `MKInput`: Although this component is not explicitly present in the provided code, I assume it's employed to generate input fields with tailored styles.
-
-In summary, Material Kit 2 components contribute to a visually cohesive and user-friendly interface by providing consistent and visually pleasing design elements.
 
 ### Integration with `textSearchService`
 
