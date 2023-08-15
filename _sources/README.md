@@ -8,8 +8,7 @@
 </p>
 
 
-[✌️Dictionary LSP](https://www.dvlsp.link) |
-[🗃️PeruSIL Database](https://github.com/gissemari/PeruvianSignLanguage) |
+[✌️Dictionary LSP](https://www.dvlsp.link)
 [📄Documentation](https://github.com/gissemari/PeruvianSignLanguage)
 </div>
 

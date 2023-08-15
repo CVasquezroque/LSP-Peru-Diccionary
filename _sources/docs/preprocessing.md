@@ -26,7 +26,7 @@ The "transformEAFTtoSRT.py" script aims to convert ELAN (EAF) files containing g
 
 ### Step 2: Video Extraction
 
-The "move_videos.py" script aims to copy video files referenced in ELAN (EAF) files from their original location to a specific destination folder. The script recursively searches for ELAN files with the '.eaf' extension and, for each file found, locates and copies the associated video file. If the video file is not found at the original location, the script looks for it in the linked media list of the ELAN file and corrects the video's path if necessary before performing the copy. This script ensures that the videos are correctly organized in the destination folder, which facilitates further processing or analysis. Note that the destination folder is typically located within the [PeruvianSignLanguage](https://github.com/gissemari/PeruvianSignLanguage) repository in the following structure:
+The "move_videos.py" script aims to copy video files referenced in ELAN (EAF) files from their original location to a specific destination folder. The script recursively searches for ELAN files with the '.eaf' extension and, for each file found, locates and copies the associated video file. If the video file is not found at the original location, the script looks for it in the linked media list of the ELAN file and corrects the video's path if necessary before performing the copy. This script ensures that the videos are correctly organized in the destination folder, which facilitates further processing or analysis. Note that the destination folder is typically located within the <a href="https://github.com/gissemari/PeruvianSignLanguage" target="_blank">`PeruvianSignLanguage`</a> repository in the following structure:
 
 
 <!-- En esta etapa se realiza tanto la preparación de los vídeos como la anotación de las señas correspondientes a los vídeos, como se muestra en el flujo a continuación.
@@ -75,7 +75,7 @@ The script utilizes the `pysrt` library to read the SRT files and extract the st
 
 The script provides additional options to customize the segmentation, such as setting the width and height of the sign language interpreter in the segmented videos and cropping the video to include only a specific region of interest (using coordinates "x1", "y1", "width", and "height"). Furthermore, the script allows for controlling the speed of the segmented videos ("fpsOutput") and considering gestures in the output video's filename.
 
-It is important to ensure that the SRT files and corresponding video files are located in the paths specified by "--srtPath" and "--rawVideoPath," respectively. It is assumed that these files are within the [PeruvianSignLanguage](https://github.com/gissemari/PeruvianSignLanguage) repository in the "Data" folder.
+It is important to ensure that the SRT files and corresponding video files are located in the paths specified by "--srtPath" and "--rawVideoPath," respectively. It is assumed that these files are within the <a href="https://github.com/gissemari/PeruvianSignLanguage" target="_blank">`PeruvianSignLanguage`</a> repository in the "Data" folder.
 
 <!-- Paso 3: Recorte de los vídeos
 
