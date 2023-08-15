@@ -24,7 +24,41 @@ Peruvian Sign Language (LSP from Spanish) plays a vital role in promoting inclus
 ### Linguistics and Deaf Community
 
 The development of the Dictionary LSP and the PUCP305 Database is a collaborative effort between linguistics experts and the deaf community. Linguistics experts, such as Miguel Rodriguez, Juan Villamonte, Alexandra Arnaiz, Sabina Oporto, César Ramos and Francisco Cerna , contribute their knowledge and expertise to ensure accurate translations and sign language transcriptions. The deaf community provides invaluable insights into the language and culture of LSP. This collaboration ensures that the Dictionary LSP is comprehensive and reflective of the needs and experiences of the deaf community.
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+  <div style="width: 175px; height: 250px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin: 10px; text-align: center;">
+    <img src="./docs/assets/miguelRodriguez.jpg" alt="Miguel Rodriguez Mondoñedo" style="width: 150px; height: 150px; object-fit: cover; border-radius: 20%; margin-bottom: 5px;">
+    <h3>Miguel Rodriguez Mondoñedo</h3>
+    <p>Líder de Linguística</p>
+  </div>
+  <div style="width: 175px; height: 250px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin: 10px; text-align: center;">
+    <img src="./docs/assets/Juan Villamonte.png" alt="Juan Villamonte" style="width: 150px; height: 150px; object-fit: cover; border-radius: 20%; margin-bottom: 5px;">
+    <h3>Juan Villamonte</h3>
+    <p>Consultor LSP</p>
+  </div>
+  <div style="width: 175px; height: 250px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin: 10px; text-align: center;">
+    <img src="./docs/assets/Alexandra Arnaiz.jpg" alt="Alexandra Arnaiz" style="width: 150px; height: 150px; object-fit: cover; border-radius: 20%; margin-bottom: 5px;">
+    <h3>Alexandra Arnaiz</h3>
+    <p>Intérprete de Lengua de Señas Peruana</p>
+  </div>
+  <div style="width: 175px; height: 250px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin: 10px; text-align: center;">
+    <img src="./docs/assets/Sabina Oporto.jpg" alt="Sabina Oporto" style="width: 150px; height: 150px; object-fit: cover; border-radius: 20%; margin-bottom: 5px;">
+    <h3>Sabina Oporto</h3>
+    <p>Gestora de Anotaciones LSP y Voluntarios</p>
+  </div>
+  <div style="width: 175px; height: 250px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin: 10px; text-align: center;">
+    <img src="./docs/assets/Francisco Cerna.jpg" alt="Francisco Cerna" style="width: 150px; height: 150px; object-fit: cover; border-radius: 20%; margin-bottom: 5px;">
+    <h3>Alexandra Arnaiz</h3>
+    <p>Apoyo de Anotación y protocolo de pruebas</p>
+  </div>
+  <div style="width: 175px; height: 250px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin: 10px; text-align: center;">
+    <img src="./docs/assets/César Ramos.JPG" alt="César Ramos" style="width: 150px; height: 150px; object-fit: cover; border-radius: 20%; margin-bottom: 5px;">
+    <h3>Alexandra Arnaiz</h3>
+    <p>Apoyo de Anotación</p>
+  </div>
+  <!-- Repeat similar blocks for other team members -->
+</div>
 
+<!-- 
 <style>
   .team-container {
     display: flex;
@@ -91,7 +125,7 @@ The development of the Dictionary LSP and the PUCP305 Database is a collaborativ
     <h3>César Ramos</h3>
     <p>Apoyo de Anotación</p>
   </div>
-</div>
+</div> -->
 
 
 
