@@ -2,7 +2,7 @@
 
 In this stage, pose estimation models are used to process the data extracted from the prepared and organized videos after the annotation and preprocessing stage. Three models, namely Mediapipe, OpenPose, and Wholepose, are utilized, which can be used together or independently as required.
 
-For installation instructions for each model, please refer to the "Keypoint estimator models installation" section in the [Connecting Points](https://github.com/JoeNatan30/ConnectingPoints) repository.
+For installation instructions for each model, please refer to the "Keypoint estimator models installation" section in the <a href="https://github.com/JoeNatan30/ConnectingPoints" target="_blank">`Connecting Points`</a> repository.
 
 This documentation specifically explains how ConnectingPoints can be used with the datasets previously worked on, including PUCP305.
 
@@ -28,7 +28,7 @@ The output HDF5 file will have separate groups for each keypoint estimator used 
 
 The ConnectingPoints stage will process the datasets and keypoints estimators to produce the HDF5 files, which will contain the pose estimation data, video names, and corresponding labels or glosses.
 
-For more details about the implementation of this step, please refer to the [Connecting Points](https://github.com/JoeNatan30/ConnectingPoints) repository.
+For more details about the implementation of this step, please refer to the <a href="https://github.com/JoeNatan30/ConnectingPoints" target="_blank">`Connecting Points`</a> repository.
 
 
 <!-- En esta etapa se hará uso de modelos de estimación de pose, y el tratamiento de esta data extraida a partir de los vídeos preparados y organizados luego de la etapa de anotación y preprocesamiento.

@@ -8,9 +8,8 @@
 </p>
 
 
-[✌️Dictionary LSP](https://www.dvlsp.link) |
-[🗃️PeruSIL Database](https://github.com/gissemari/PeruvianSignLanguage)
-
+[✌️Dictionary LSP](https://www.dvlsp.link)
+[📄Documentation](https://github.com/gissemari/PeruvianSignLanguage)
 </div>
 
 # Welcome!👋
@@ -182,14 +181,13 @@ The development of the LSP Service involves the contributions of dedicated softw
 
 ## Description of the Database
 
-The PUCP305 Database is a comprehensive collection of signs in Peruvian Sign Language (LSP). It includes a wide range of terms, each accompanied by videos, translations into Spanish, sign language transcriptions, and example sentences. The database serves as a valuable resource for learning LSP, .... *Completar*
+The PUCP305 Database is a comprehensive collection of Peruvian Sign Language (LSP) signs. It encompasses a wide array of terms, each accompanied by videos, Spanish translations, sign language transcriptions, and example sentences. This database serves as a valuable resource for learning LSP, enhancing communication skills, and fostering inclusivity within the deaf community.
 
-<!-- providing users with a rich glossary of signs and supporting materials. Whether you are a language learner, a researcher, or a member of the deaf community, the PeruSIL Database offers a wealth of information to enhance your understanding and engagement with LSP. -->
-
-## News
+The PUCP305 Database comprises 511 glosses and 374 unique classes or lemmas. These terms have been recorded from a total of 275 sentence videos in controlled environments at the Pontifical Catholic University of Peru by members of the deaf community. Each video and its corresponding transcription contribute to a deeper understanding of signs and their usage context. With this database, the goal is to promote the dissemination and preservation of Peruvian Sign Language, encouraging its teaching and fostering cross-cultural understanding.
+<!-- ## News
 
 Stay up to date with the latest news and updates from the team behind the Spanish To LSP Translation Service. We regularly share announcements, improvements, and new features to enhance your experience and promote the accessibility of LSP. Check back often for exciting updates and developments in our ongoing mission to facilitate inclusive communication and understanding.
 
 - June 2023: LSP has ...
-- March 2023: LSP Team won ...
+- March 2023: LSP Team won ... -->
 

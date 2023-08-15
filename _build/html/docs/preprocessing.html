@@ -169,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Search</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Deploy_TextSearch.html">Deployment of Text Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deploy_TextSearch.html">Data Processing and Upload Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Backend_TextSearch.html">Backend Implementation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
@@ -411,7 +411,7 @@ document.write(`
 </section>
 <section id="step-2-video-extraction">
 <h3>Step 2: Video Extraction<a class="headerlink" href="#step-2-video-extraction" title="Permalink to this heading">#</a></h3>
-<p>The “move_videos.py” script aims to copy video files referenced in ELAN (EAF) files from their original location to a specific destination folder. The script recursively searches for ELAN files with the ‘.eaf’ extension and, for each file found, locates and copies the associated video file. If the video file is not found at the original location, the script looks for it in the linked media list of the ELAN file and corrects the video’s path if necessary before performing the copy. This script ensures that the videos are correctly organized in the destination folder, which facilitates further processing or analysis. Note that the destination folder is typically located within the <a class="reference external" href="https://github.com/gissemari/PeruvianSignLanguage">PeruvianSignLanguage</a> repository in the following structure:</p>
+<p>The “move_videos.py” script aims to copy video files referenced in ELAN (EAF) files from their original location to a specific destination folder. The script recursively searches for ELAN files with the ‘.eaf’ extension and, for each file found, locates and copies the associated video file. If the video file is not found at the original location, the script looks for it in the linked media list of the ELAN file and corrects the video’s path if necessary before performing the copy. This script ensures that the videos are correctly organized in the destination folder, which facilitates further processing or analysis. Note that the destination folder is typically located within the <a href="https://github.com/gissemari/PeruvianSignLanguage" target="_blank"><code class="docutils literal notranslate"><span class="pre">PeruvianSignLanguage</span></code></a> repository in the following structure:</p>
 <!-- En esta etapa se realiza tanto la preparación de los vídeos como la anotación de las señas correspondientes a los vídeos, como se muestra en el flujo a continuación.
 
 Anotación de Señas
@@ -453,7 +453,7 @@ El archivo "move_videos.py" tiene como objetivo copiar archivos de video referen
 <p>The “<a class="reference external" href="http://cropInterpreterBySRT.py">cropInterpreterBySRT.py</a>” script aims to segment and crop specific video segments based on the annotations provided in the SRT files. It reads the SRT files located in the path specified by “–srtPath” and uses the temporal information from the annotations to identify the start and end times of each segment of interest.</p>
 <p>The script utilizes the <code class="docutils literal notranslate"><span class="pre">pysrt</span></code> library to read the SRT files and extract the start and end times of each annotation. It then uses the <code class="docutils literal notranslate"><span class="pre">cv2</span></code> library to read the original videos located in the path specified by “–rawVideoPath”. For each segment identified in the SRT file, the script crops the corresponding original video, creating a new video that contains only the cropped segment. The segmented videos are saved in the path specified by “–outputVideoPath”.</p>
 <p>The script provides additional options to customize the segmentation, such as setting the width and height of the sign language interpreter in the segmented videos and cropping the video to include only a specific region of interest (using coordinates “x1”, “y1”, “width”, and “height”). Furthermore, the script allows for controlling the speed of the segmented videos (“fpsOutput”) and considering gestures in the output video’s filename.</p>
-<p>It is important to ensure that the SRT files and corresponding video files are located in the paths specified by “–srtPath” and “–rawVideoPath,” respectively. It is assumed that these files are within the <a class="reference external" href="https://github.com/gissemari/PeruvianSignLanguage">PeruvianSignLanguage</a> repository in the “Data” folder.</p>
+<p>It is important to ensure that the SRT files and corresponding video files are located in the paths specified by “–srtPath” and “–rawVideoPath,” respectively. It is assumed that these files are within the <a href="https://github.com/gissemari/PeruvianSignLanguage" target="_blank"><code class="docutils literal notranslate"><span class="pre">PeruvianSignLanguage</span></code></a> repository in the “Data” folder.</p>
 <!-- Paso 3: Recorte de los vídeos
 
 

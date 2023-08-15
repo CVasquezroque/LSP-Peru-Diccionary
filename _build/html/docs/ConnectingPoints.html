@@ -169,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Search</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Deploy_TextSearch.html">Deployment of Text Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deploy_TextSearch.html">Data Processing and Upload Workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Backend_TextSearch.html">Backend Implementation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
@@ -376,7 +376,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="connectingpoints">
 <h1>ConnectingPoints<a class="headerlink" href="#connectingpoints" title="Permalink to this heading">#</a></h1>
 <p>In this stage, pose estimation models are used to process the data extracted from the prepared and organized videos after the annotation and preprocessing stage. Three models, namely Mediapipe, OpenPose, and Wholepose, are utilized, which can be used together or independently as required.</p>
-<p>For installation instructions for each model, please refer to the “Keypoint estimator models installation” section in the <a class="reference external" href="https://github.com/JoeNatan30/ConnectingPoints">Connecting Points</a> repository.</p>
+<p>For installation instructions for each model, please refer to the “Keypoint estimator models installation” section in the <a href="https://github.com/JoeNatan30/ConnectingPoints" target="_blank"><code class="docutils literal notranslate"><span class="pre">Connecting</span> <span class="pre">Points</span></code></a> repository.</p>
 <p>This documentation specifically explains how ConnectingPoints can be used with the datasets previously worked on, including PUCP305.</p>
 <p>The following diagram summarizes this stage, where the expected output is an HDF5 file.</p>
 <p align="center">
@@ -397,7 +397,7 @@ document.write(`
 </ul>
 <p>The output HDF5 file will have separate groups for each keypoint estimator used and each dataset or mix chosen. The user needs to create the “output” folder to store the generated HDF5 files.</p>
 <p>The ConnectingPoints stage will process the datasets and keypoints estimators to produce the HDF5 files, which will contain the pose estimation data, video names, and corresponding labels or glosses.</p>
-<p>For more details about the implementation of this step, please refer to the <a class="reference external" href="https://github.com/JoeNatan30/ConnectingPoints">Connecting Points</a> repository.</p>
+<p>For more details about the implementation of this step, please refer to the <a href="https://github.com/JoeNatan30/ConnectingPoints" target="_blank"><code class="docutils literal notranslate"><span class="pre">Connecting</span> <span class="pre">Points</span></code></a> repository.</p>
 <!-- En esta etapa se hará uso de modelos de estimación de pose, y el tratamiento de esta data extraida a partir de los vídeos preparados y organizados luego de la etapa de anotación y preprocesamiento.
 
 Para ello se hace uso de 3 modelos, Mediapipe, OpenPose y Wholepose, los cuales pueden ser usados tanto en conjunto como independientemente según corresponda.
