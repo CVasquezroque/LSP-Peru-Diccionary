@@ -1,15 +1,18 @@
 <div align="center">
 
-<p align="center">
+<!-- <p align="center">
 <img src="docs/assets/banner2.png" width="100%">
-</p>
+</p> -->
 <p align="center">
-<img src="docs/assets/banner_animation.gif" width="75%">
+<img src="docs/assets/banner_animation.gif" width="100%">
 </p>
 
 
+[📚Documentation](https://diccionario-lsp.github.io/Docs/README.html) |
 [✌️Dictionary LSP](https://www.dvlsp.link)
-[📄Documentation](https://github.com/gissemari/PeruvianSignLanguage)
+<!-- [🗃️PeruSIL Database](https://github.com/gissemari/PeruvianSignLanguage)  -->
+
+
 </div>
 
 # Welcome!👋
