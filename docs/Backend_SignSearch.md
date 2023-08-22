@@ -1,12 +1,12 @@
 # Backend Implementation
 
-For backend connections between the web application and Sign Search functionalities, a linkage between AWS Sagemaker and the website needs to be established. AWS Lambda plays a pivotal role in this process by invoking Sagemaker to send keypoints and subsequently receiving prediction results. This interaction is orchestrated to ensure seamless communication between the various services.
+To connect the web app with Sign Search on the back-end, we need to make a connection between AWS Sagemaker and the website. AWS Lambda helps with this by asking Sagemaker for predictions based on keypoints and getting the results back to the website. 
 
 ## AWS Lambda Implementation
 
 Note: The following description covers two scenarios: one involving video transmission and another focusing on keypoints, as video transmission was previously employed.
 
-AWS Lambda Name: sagemaker-invoker
+#### AWS Lambda Name: sagemaker-invoker
 
 <p align="center">
   <img src="./assets/Lambda_sagemaker.jpg" alt="lambda folder" width="780">
@@ -72,7 +72,7 @@ def lambda_handler(event, context):
 
 ### lambda_function.py
 
-Upon invocation, the function expects an event and context object as parameters. It first retrieves environment variables ENDPOINT_NAME and KEYPOINT_ENDPOINT_NAME using the os.environ dictionary, which are expected to hold the names of the SageMaker endpoints to be invoked.
+Upon invocation, the function expects an event and context object as parameters. It first retrieves environment variables ENDPOINT_NAME and/or KEYPOINT_ENDPOINT_NAME using the os.environ dictionary, which are expected to hold the names of the SageMaker endpoints to be invoked.
 
 The Lambda function's core functionality is driven by the lambda_handler function. It examines the incoming event object to determine whether it contains information related to a video or keypoints. If the event contains a 'video' key, the function assumes that it is dealing with a video file and proceeds to invoke the specified SageMaker endpoint (ENDPOINT_NAME). It constructs an input payload containing the uniqueName of the video file and sends it to the SageMaker endpoint. The response is then decoded and parsed as JSON to retrieve the prediction result.
 
