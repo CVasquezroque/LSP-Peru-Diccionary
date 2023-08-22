@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -64,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Backend_SignSearch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Inference" href="Inference.html" />
+    <link rel="prev" title="Model Deployment and Inference" href="Inference.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -108,6 +109,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content"><p class="announcement">
+The LSP dictionary documentation is currently under construction and improvement <span class="emoji">😊🚧</span>
+</p>
+</div>
+  </div>
+
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
     </nav>
@@ -173,8 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Inference.html">Inference</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="Inference.html">Model Deployment and Inference</a></li>
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Backend Implementation</a></li>
 </ul>
@@ -371,6 +380,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-lambda-implementation">AWS Lambda Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-lambda-name-sagemaker-invoker">AWS Lambda Name: sagemaker-invoker</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-function-py">lambda_function.py</a></li>
 </ul>
 </li>
@@ -389,13 +399,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="backend-implementation">
+  <section id="backend-implementation">
 <h1>Backend Implementation<a class="headerlink" href="#backend-implementation" title="Permalink to this heading">#</a></h1>
-<p>For backend connections between the web application and Sign Search functionalities, a linkage between AWS Sagemaker and the website needs to be established. AWS Lambda plays a pivotal role in this process by invoking Sagemaker to send keypoints and subsequently receiving prediction results. This interaction is orchestrated to ensure seamless communication between the various services.</p>
+<p>To connect the web app with Sign Search on the back-end, we need to make a connection between AWS Sagemaker and the website. AWS Lambda helps with this by asking Sagemaker for predictions based on keypoints and getting the results back to the website.</p>
 <section id="aws-lambda-implementation">
 <h2>AWS Lambda Implementation<a class="headerlink" href="#aws-lambda-implementation" title="Permalink to this heading">#</a></h2>
 <p>Note: The following description covers two scenarios: one involving video transmission and another focusing on keypoints, as video transmission was previously employed.</p>
-<p>AWS Lambda Name: sagemaker-invoker</p>
+<section id="aws-lambda-name-sagemaker-invoker">
+<h3>AWS Lambda Name: sagemaker-invoker<a class="headerlink" href="#aws-lambda-name-sagemaker-invoker" title="Permalink to this heading">#</a></h3>
 <p align="center">
   <img src="./assets/Lambda_sagemaker.jpg" alt="lambda folder" width="780">
 </p>
@@ -456,9 +467,10 @@ document.write(`
     <span class="k">return</span> <span class="n">pred</span>
 </pre></div>
 </div>
+</section>
 <section id="lambda-function-py">
 <h3>lambda_function.py<a class="headerlink" href="#lambda-function-py" title="Permalink to this heading">#</a></h3>
-<p>Upon invocation, the function expects an event and context object as parameters. It first retrieves environment variables ENDPOINT_NAME and KEYPOINT_ENDPOINT_NAME using the os.environ dictionary, which are expected to hold the names of the SageMaker endpoints to be invoked.</p>
+<p>Upon invocation, the function expects an event and context object as parameters. It first retrieves environment variables ENDPOINT_NAME and/or KEYPOINT_ENDPOINT_NAME using the os.environ dictionary, which are expected to hold the names of the SageMaker endpoints to be invoked.</p>
 <p>The Lambda function’s core functionality is driven by the lambda_handler function. It examines the incoming event object to determine whether it contains information related to a video or keypoints. If the event contains a ‘video’ key, the function assumes that it is dealing with a video file and proceeds to invoke the specified SageMaker endpoint (ENDPOINT_NAME). It constructs an input payload containing the uniqueName of the video file and sends it to the SageMaker endpoint. The response is then decoded and parsed as JSON to retrieve the prediction result.</p>
 <p>Similarly, if the event contains a ‘keypoints’ key, the function assumes it’s dealing with keypoints data. It invokes the corresponding SageMaker endpoint (KEYPOINT_ENDPOINT_NAME) using the keypoints data as input. The process is identical to the video scenario.</p>
 <p>If the event doesn’t match either of these scenarios, the function returns an error message indicating an incorrect format.</p>
@@ -529,7 +541,7 @@ You will find the AWS Configuration for the Sagemaker Invoker Endpoint in ./src/
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Inference</p>
+        <p class="prev-next-title">Model Deployment and Inference</p>
       </div>
     </a>
 </div></div>
@@ -551,6 +563,7 @@ You will find the AWS Configuration for the Sagemaker Invoker Endpoint in ./src/
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-lambda-implementation">AWS Lambda Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-lambda-name-sagemaker-invoker">AWS Lambda Name: sagemaker-invoker</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-function-py">lambda_function.py</a></li>
 </ul>
 </li>

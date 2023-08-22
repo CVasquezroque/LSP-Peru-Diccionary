@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Inference &#8212; Diccionario LSP al Español</title>
+    <title>Model Deployment and Inference &#8212; Diccionario LSP al Español</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -109,6 +110,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content"><p class="announcement">
+The LSP dictionary documentation is currently under construction and improvement <span class="emoji">😊🚧</span>
+</p>
+</div>
+  </div>
+
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
     </nav>
@@ -174,8 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Inference</a></li>
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Model Deployment and Inference</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="Backend_SignSearch.html">Backend Implementation</a></li>
 </ul>
@@ -361,7 +370,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Inference</h1>
+    <h1>Model Deployment and Inference</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -371,20 +380,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Inference</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-structure">File Structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-prepare-the-model-inference-format-folder">How to prepare the model_inference_format folder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-set-the-inference-in-production">Steps to set the inference in production</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Model Deployment and Inference</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-deployment-process">Model Deployment Process</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#general-overview-of-the-model-we-use">General overview of the model we use</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons learned</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-models-we-tried">Inference models we tried</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda">Lambda</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sagemaker-with-ecr">Sagemaker with ECR</a></li>
-</ul>
-</li>
 </ul>
 
             </nav>
@@ -397,168 +397,35 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="inference">
-<h1>Inference<a class="headerlink" href="#inference" title="Permalink to this heading">#</a></h1>
-<p>The deployment process involves the following steps:</p>
-<ol class="arabic simple">
-<li><p>Clone this repository to your local machine.</p></li>
-<li><p>Prepare the model_inference_format folders</p></li>
-<li><p>Run <a class="reference external" href="http://deploy.py">deploy.py</a>. This script automates the deployment of the Sagemaker endpoint and creates the Docker image required for the EC2 deployment.</p></li>
-<li><p>Use Lambda function to test the deployed model in AWS</p></li>
-</ol>
-<p>In order to use the “Spoter” model from the Sagemaker service, we prepared a Python file called “<a class="reference external" href="http://deploy.py">deploy.py</a>”. This model has a simpler implementation, so we do not have dependencies issues.</p>
-<p>The “<a class="reference external" href="http://deploy.py">deploy.py</a>” code retrieves AWS credentials from ../configuration/config.json and prepares the Spoter model for deployment in Sagemaker. The code sets the necessary environment variables for authentication and sets the Sagemaker role. A mode.tar.gz file should be uploaded into the S3 Bucket. If you don’t have a “model.tar.gz” file, please read the Section ‘How to prepare the model_inference_format folder’</p>
-<p>Once the model is prepared, the code deploys it to a Sagemaker endpoint using the “PyTorchModel” class. A progress bar will indicate that the inference is being created, and you can check it in the Sagemaker endpoint dashboard. Finally, the code creates a predictor to interact with the deployed model.</p>
-<p>The diagram show how the inference works in the deployment process</p>
-<section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
-<p>Before proceeding with the deployment, make sure you have completed the following steps:</p>
-<ol class="arabic simple">
-<li><p>Created an AWS account with the necessary permissions.</p></li>
-<li><p>Configured AWS credentials on your local machine (Modify the configuration file located in <em>../configuration/config.json</em>).</p></li>
-<li><p>Created an S3 bucket for model deployment and video uploads. Make sure the buckets are configured to allow put or get operations, as described in the <a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html">AWS S3 Documentation</a></p></li>
-<li><p>Created a Lambda Function to Call Sagemaker as described in <a class="reference external" href="https://aws.amazon.com/es/blogs/machine-learning/call-an-amazon-sagemaker-model-endpoint-using-amazon-api-gateway-and-aws-lambda/">AWS Machine Learning Blog</a></p></li>
-</ol>
-</section>
-<section id="file-structure">
-<h2>File Structure<a class="headerlink" href="#file-structure" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Inference
-├── deploy.py                           [Python script to deploy Inference code]
-└── spoter_inference_format
-    ├── code
-    │   ├── Data                        [subfolder containing data files for inference]
-    │   │   ├── Mapeo landmarks librerias - Hoja 1_2.csv
-    │   │   └── Mapeo landmarks librerias - Hoja 1.csv
-    │   ├── spoter                      [subfolder containing code for SPOTER model]
-    │   │   ├── __init__.py
-    │   │   ├── experimenter.py         
-    │   │   ├── gaussian_noise.py       
-    │   │   ├── spoter_model.py         [script defining the SPOTER model architecture]
-    │   │   ├── training_spoter.py      [script for training the SPOTER model]
-    │   │   └── utils.py                [utility script for SPOTER code]
-    │   └── Src                         [subfolder containing source code for inference]
-    │       ├── augmentations.py        
-    │       ├── czech_slr_dataset.py    
-    │       └── Lsp_dataset.py          [script defining the LSP dataset class]
-    ├── model.pth                       [file containing pre-trained model for deployment]
-    ├── config.json                     [file containing the configuration for the trained model used in inference]
-    ├── __init__.py
-    ├── inference.py                    [Python script for running inference with the pre-trained model]
-    ├── meaning_72.json                 
-    ├── meaning.json                    
-    ├── points_29.csv                   [file containing landmark coordinates for 29 landmarks used in the model]
-    ├── points_71.csv                   [file containing landmark coordinates for 71 landmarks used in the model]
-    ├── requirements.txt                [file containing required Python packages for running the inference code]
-    └── utils.py                        [utility script for the inference code]
-
-
-</pre></div>
-</div>
-</section>
-<section id="how-to-prepare-the-model-inference-format-folder">
-<h2>How to prepare the model_inference_format folder<a class="headerlink" href="#how-to-prepare-the-model-inference-format-folder" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Note: we change “model” by the name of the model we are using for SLR</p>
-</div></blockquote>
-<p>Inside that folder you have to place the model and the code you will use for the inference.
-This have to be in an specific structure
-|- code/
-|     - requirement.txt
-|     - <a class="reference external" href="http://inference.py">inference.py</a>
-|- model.pth</p>
-<p>Where:</p>
+  <section id="model-deployment-and-inference">
+<h1>Model Deployment and Inference<a class="headerlink" href="#model-deployment-and-inference" title="Permalink to this heading">#</a></h1>
+<p>Model deployment and inference are the core module for the Sign Search funcionality. This documentation provides an initial understanding of these processes, while detailed instructions and code can be found in the <a class="reference external" href="https://github.com/Diccionario-LSP/SpanishToLSPTranslationService/tree/main/Inference">Inference repository</a>.</p>
+<section id="model-deployment-process">
+<h2>Model Deployment Process<a class="headerlink" href="#model-deployment-process" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><em><strong>requirement.txt</strong></em> is the file where are located the dependencies to make the model work</p></li>
-<li><p><em><strong><a class="reference external" href="http://inference.py">inference.py</a></strong></em> is the file which is referenced in <a class="reference external" href="http://deploy.py">deploy.py</a> where you can find the functions that make the inference work.</p></li>
-<li><p><em><strong>model.pth</strong></em> is the pre-trained model saved</p></li>
+<li><p>Clone the <a class="reference external" href="https://github.com/Diccionario-LSP/SpanishToLSPTranslationService/tree/main/Inference">Diccionario LSP repository</a> to your local machine.</p></li>
+<li><p>Prepare the <code class="docutils literal notranslate"><span class="pre">model_inference_format</span></code> folders.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">deploy.py</span></code>. This script automates the deployment of the Sagemaker endpoint and creates the Docker image required for the EC2 deployment.</p></li>
+<li><p>Use a AWS Lambda function to test the deployed model in AWS platform.</p></li>
 </ul>
-<p>More information about the structure and the use of sagemaker SDK can be found <a class="reference external" href="https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#bring-your-own-model">here</a></p>
+<p>In the context of the Dictionary LSP, we have prepared a Python file called <code class="docutils literal notranslate"><span class="pre">deploy.py</span></code> to deploy the “Spoter” model using AWS Sagemaker. More details of prerequisites and the steps to set the inference in production is available in the <a class="reference external" href="https://github.com/Diccionario-LSP/SpanishToLSPTranslationService/tree/main/Inference">Diccionario LSP repository</a></p>
+<p>The diagram show how the inference works in the deployment process</p>
 <p><em><strong>IMPORTANT</strong></em>
-The file “<a class="reference external" href="http://inference.py">inference.py</a>” have to have necessary functions:</p>
+The file “inference.py” have to have necessary functions:</p>
 <ul class="simple">
 <li><p>def input_fn(request_body, request_content_type):</p></li>
 <li><p>def predict_fn(input_data, model):</p></li>
 <li><p>def model_fn(model_dir):</p></li>
 <li><p>def output_fn(prediction, content_type):</p></li>
 </ul>
-</section>
-<section id="steps-to-set-the-inference-in-production">
-<h2>Steps to set the inference in production<a class="headerlink" href="#steps-to-set-the-inference-in-production" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Prepare all the files mentioned before</p></li>
-<li><p>check if the necessary function are set in <a class="reference external" href="http://inference.py">inference.py</a></p></li>
-<li><p>got to the “model_inference_format” folder (spoter_inference_format is been used in this example)</p></li>
-<li><p>put in that folder the model.pth prepared in the training of spoter model</p></li>
-<li><p>check if all the parameters in code/config.json are the same as the pre-trained model</p></li>
-<li><p>if it is necessary, the file “code/meaning.json” have to be replaced</p></li>
-<li><p>run ‘tar czvf model.tar.gz *’ to compress the model and the code folder</p></li>
-<li><p>upload this compress file in the specific AWS S3 bucket for that purpouse</p></li>
-<li><p>go back to the previous folder</p></li>
-<li><p>In “<a class="reference external" href="http://deploy.py">deploy.py</a>” check if all the parameters are as desired (Note: don’t forget to prepare aws configuration)</p></li>
-<li><p>run ‘python <a class="reference external" href="http://deploy.py">deploy.py</a>’</p></li>
-</ol>
-<!-- ## Note
-
-Remember to modify the configuration json file located in "configuration" folder (in root folder)  -->
+<p>Remember to modify the configuration json file located in “configuration” folder (in root folder)  –&gt;</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="general-overview-of-the-model-we-use">
+<section id="general-overview-of-the-model-we-use">
 <h1>General overview of the model we use<a class="headerlink" href="#general-overview-of-the-model-we-use" title="Permalink to this heading">#</a></h1>
 <p align="center">
   <img src="./assets/inference-process_v2.png" alt="inference" width="900">
 </p>
-</section>
-<hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="lessons-learned">
-<h1>Lessons learned<a class="headerlink" href="#lessons-learned" title="Permalink to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Prepare requirement.txt without version to adapt it in the sagemaker endpoint platform</p></li>
-<li><p>Sagemaker pip library is all you need to deploy the endpoint (it also possible using the dashboard but is more complicated because you have to configure it manually)</p></li>
-<li><p>Always check CloudWatch to know what happend when it deploys.</p></li>
-<li><p>Also, when you are coding, left some message using logging library because you can check it on CloudWatch</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="n">c_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
-<span class="n">c_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
-<span class="n">c_format</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%(name)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">c_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">c_format</span><span class="p">)</span>
-<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">c_handler</span><span class="p">)</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>The way the code runs locally is different in sagemaker, you need to add “code” folder in all the imports and in the paths if you use some files such as ‘scv’, ‘json’, etc. To solve the first you can add this code at the beginning of the code</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;./code&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>in “def model_fn(model_dir)” the model_dir variable only have the path to the root where the model is located. So, you need to add the name of the model to this path.</p></li>
-<li><p>in the script used for deploy, remember to use in PyTorchModel the following parameters  ‘framework_version” higher than “1.9.0” to be able to use “py38” in “py_version”</p></li>
-</ul>
-<p>Note: To train a model you have to use “ConnectingPoints” repository and follow the readme of this respository, or download our preprocessed Hdf5 files from our google drive (this will be added in the future) and modify the dataset path in the config.json of this folder.</p>
-<section id="inference-models-we-tried">
-<h2>Inference models we tried<a class="headerlink" href="#inference-models-we-tried" title="Permalink to this heading">#</a></h2>
-<p>During our project, we tested three different inference model deployments:</p>
-<ul class="simple">
-<li><p>Lambda (deprecated)</p></li>
-<li><p>Sagemaker with ECR (ECR)</p></li>
-<li><p>Sagemaker without ECR (Actual Implementation)</p></li>
-</ul>
-<p>After thorough testing, we found that the Sagemaker NoECR deployment work better.</p>
-</section>
-<section id="lambda">
-<h2>Lambda<a class="headerlink" href="#lambda" title="Permalink to this heading">#</a></h2>
-<p>We worked with two models “m-decoster” and “Smile-lab” model. we do not use this due to the cold start it needs.</p>
-</section>
-<section id="sagemaker-with-ecr">
-<h2>Sagemaker with ECR<a class="headerlink" href="#sagemaker-with-ecr" title="Permalink to this heading">#</a></h2>
-<p>We prepared a dockerfile to use the model “Smile-lab” and “Spoter” (state: in process) because this one generates notable better results than “m-decoster”. We think that the problem could be in these two places:</p>
-<ul class="simple">
-<li><p>Not correctly locating the torchserve files and our code in the docker image</p></li>
-<li><p>Our invocation file is not well implemented and this causes us to get some error messages.</p></li>
-</ul>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -628,20 +495,11 @@ Remember to modify the configuration json file located in "configuration" folder
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Inference</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-structure">File Structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-prepare-the-model-inference-format-folder">How to prepare the model_inference_format folder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-set-the-inference-in-production">Steps to set the inference in production</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Model Deployment and Inference</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-deployment-process">Model Deployment Process</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#general-overview-of-the-model-we-use">General overview of the model we use</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons learned</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-models-we-tried">Inference models we tried</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda">Lambda</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sagemaker-with-ecr">Sagemaker with ECR</a></li>
-</ul>
-</li>
 </ul>
 
   </nav></div>

@@ -2,14 +2,19 @@
 
 This documentation provides an overview of the Dictionary LSP to Spanish and guides you through the process of getting started with using the system. It outlines the necessary requirements, the overall structure of the Dictionary LSP to Spanish, and the workflow involved in building the system effectively.
 
-## What You Need to Get Started
+## Prerequisites for Developers
 
-1. Access to a computer with an internet connection.
-2. Basic familiarity with the Spanish language and Peruvian Sign Language (LSP).
-3. AWS CLI installed in your local machine and AWS Credentials set up.
-4. Python installed in your local machine or virtual environments (library requirements are detailed in each step)
+This documentation is designed to facilitate developers in continuing or replicating the Dictionary LSP project. To get started, ensure the following prerequisites are met:
 
-With these prerequisites in place, you are ready to explore and utilize the Dictionary LSP to Spanish.
+1. **Hardware and Connectivity**: Access to a computer with an internet connection is essential for project development and replication.
+
+2. **AWS CLI and Credentials**: Install the AWS Command Line Interface (CLI) on your local machine and configure the project AWS credentials.
+
+3. **Python Environment**: Set up Python on your local machine or within virtual environments as per the specific library requirements detailed in each development step.
+
+4. **Optional: MLOps and AWS Experience**: While not mandatory, prior familiarity with MLOps practices and AWS services can greatly facilitate project development and understanding.
+
+5. **Optional: Deep Learning and Transformers Experience**: Experience in deep learning, particularly with Transformers, is advantageous for certain aspects of the project.
 
 ## Overview of the Dictionary LSP to Spanish
 

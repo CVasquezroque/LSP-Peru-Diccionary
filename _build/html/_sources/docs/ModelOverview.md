@@ -20,4 +20,4 @@ Finally, model.pth is saved to be used in the inference as part of the deploymen
 </p>
 
 
-It is important to note that while the SLR model is based on the SPOTER repository, the modifications and adaptations mentioned above were essential to ensure its suitability for the specific sign language dataset being used in the project.
+It is important to note that while the SLR model is based on the SPOTER repository, the modifications and adaptations mentioned above were essential to ensure its suitability for the specific sign language dataset being used in the project. Details about the implementation of our adaptation of SPOTER model is in the <a href="https://github.com/Diccionario-LSP/Spoter-LSP-IA-Model" target="_blank">`Spoter-LSP-IA-Model`</a> repository.
