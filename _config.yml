@@ -14,6 +14,10 @@ execute:
 
 html:
   extra_navbar: ""
+  announcement: |
+    <p class="announcement">
+    The LSP dictionary documentation is currently under construction and improvement <span class="emoji">😊🚧</span>
+    </p>
   use_issues_button: true
   use_repository_button: true
   extra_footer: |
@@ -24,3 +28,6 @@ repository:
   path_to_book: docs
   branch: master
 
+parse:
+  myst_enable_extensions:
+   - color_fence
