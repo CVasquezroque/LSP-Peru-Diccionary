@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -109,6 +110,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content"><p class="announcement">
+The LSP dictionary documentation is currently under construction and improvement <span class="emoji">😊🚧</span>
+</p>
+</div>
+  </div>
+
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
     </nav>
@@ -174,8 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Inference.html">Inference</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="Inference.html">Model Deployment and Inference</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="Backend_SignSearch.html">Backend Implementation</a></li>
 </ul>
@@ -371,7 +380,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-need-to-get-started">What You Need to Get Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-for-developers">Prerequisites for Developers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-dictionary-lsp-to-spanish">Overview of the Dictionary LSP to Spanish</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-workflow">Overview of the Workflow</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-building-workflow">Model Building Workflow</a></li>
@@ -389,18 +398,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="documentation-overview">
+  <section id="documentation-overview">
 <h1>Documentation Overview<a class="headerlink" href="#documentation-overview" title="Permalink to this heading">#</a></h1>
 <p>This documentation provides an overview of the Dictionary LSP to Spanish and guides you through the process of getting started with using the system. It outlines the necessary requirements, the overall structure of the Dictionary LSP to Spanish, and the workflow involved in building the system effectively.</p>
-<section id="what-you-need-to-get-started">
-<h2>What You Need to Get Started<a class="headerlink" href="#what-you-need-to-get-started" title="Permalink to this heading">#</a></h2>
+<section id="prerequisites-for-developers">
+<h2>Prerequisites for Developers<a class="headerlink" href="#prerequisites-for-developers" title="Permalink to this heading">#</a></h2>
+<p>This documentation is designed to facilitate developers in continuing or replicating the Dictionary LSP project. To get started, ensure the following prerequisites are met:</p>
 <ol class="arabic simple">
-<li><p>Access to a computer with an internet connection.</p></li>
-<li><p>Basic familiarity with the Spanish language and Peruvian Sign Language (LSP).</p></li>
-<li><p>AWS CLI installed in your local machine and AWS Credentials set up.</p></li>
-<li><p>Python installed in your local machine or virtual environments (library requirements are detailed in each step)</p></li>
+<li><p><strong>Hardware and Connectivity</strong>: Access to a computer with an internet connection is essential for project development and replication.</p></li>
+<li><p><strong>AWS CLI and Credentials</strong>: Install the AWS Command Line Interface (CLI) on your local machine and configure the project AWS credentials.</p></li>
+<li><p><strong>Python Environment</strong>: Set up Python on your local machine or within virtual environments as per the specific library requirements detailed in each development step.</p></li>
+<li><p><strong>Optional: MLOps and AWS Experience</strong>: While not mandatory, prior familiarity with MLOps practices and AWS services can greatly facilitate project development and understanding.</p></li>
+<li><p><strong>Optional: Deep Learning and Transformers Experience</strong>: Experience in deep learning, particularly with Transformers, is advantageous for certain aspects of the project.</p></li>
 </ol>
-<p>With these prerequisites in place, you are ready to explore and utilize the Dictionary LSP to Spanish.</p>
 </section>
 <section id="overview-of-the-dictionary-lsp-to-spanish">
 <h2>Overview of the Dictionary LSP to Spanish<a class="headerlink" href="#overview-of-the-dictionary-lsp-to-spanish" title="Permalink to this heading">#</a></h2>
@@ -499,7 +509,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-need-to-get-started">What You Need to Get Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-for-developers">Prerequisites for Developers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-dictionary-lsp-to-spanish">Overview of the Dictionary LSP to Spanish</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-workflow">Overview of the Workflow</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-building-workflow">Model Building Workflow</a></li>

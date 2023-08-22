@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -109,6 +110,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content"><p class="announcement">
+The LSP dictionary documentation is currently under construction and improvement <span class="emoji">😊🚧</span>
+</p>
+</div>
+  </div>
+
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
     </nav>
@@ -174,8 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Inference.html">Inference</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="Inference.html">Model Deployment and Inference</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="Backend_SignSearch.html">Backend Implementation</a></li>
 </ul>
@@ -375,7 +384,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-preparation">Video Preparation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-transforming-elan-to-srt-files">Step 1: Transforming ELAN to SRT Files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-video-extraction">Step 2: Video Extraction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-video-cropping">Step 3: Video Cropping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-video-segmentation-and-cropping">Step 3: Video Segmentation and Cropping</a></li>
 </ul>
 </li>
 </ul>
@@ -389,12 +398,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="annotation-and-isolating-sign-language-videos">
+  <section id="annotation-and-isolating-sign-language-videos">
 <h1>Annotation and Isolating Sign Language Videos<a class="headerlink" href="#annotation-and-isolating-sign-language-videos" title="Permalink to this heading">#</a></h1>
 <p>In this stage, both video preparation and the annotation of signs corresponding to the videos are performed, as shown in the following workflow.</p>
-<p align="center">
-  <img src="./assets/Preprocessing.png" alt="Preprocessing" width="738">
-</p>
 <section id="annotation-of-signs">
 <h2>Annotation of Signs<a class="headerlink" href="#annotation-of-signs" title="Permalink to this heading">#</a></h2>
 <p>For the annotation of videos, we utilized the ELAN video annotation tool, where previously agreed-upon glosses for the words described in each example sentence from the PUCP305 database were annotated. The PUCP305 database contains multiple examples of sentences, each containing several signs for different words. The task was to create an Isolated Sign Language (ISL) video database. The annotation of glosses, along with their corresponding timeframes, served as the basis for creating the ISL database, as illustrated in the image below. This task involved meticulous work from the entire linguistic team and the Deaf community to create a dataset that accurately represents how communication occurs within the community, requiring in-depth study to define the signs’ glosses correctly.</p>
@@ -405,9 +411,12 @@ document.write(`
 <section id="video-preparation">
 <h2>Video Preparation<a class="headerlink" href="#video-preparation" title="Permalink to this heading">#</a></h2>
 <p>Video preparation involved using Python scripts for specific preprocessing tasks, divided into three stages: transforming EAF (ELAN files) into SRT files, extracting all videos from the unprocessed database, and then cropping them based on the timeframes indicated in the SRT files to generate each ISL video. Additionally, if needed, cropping was performed to include only the interpreter’s location (used in previous databases, where the interpreter was not centered in the video, and the video contained content besides the interpreter).</p>
+<p align="center">
+  <img src="./assets/Preprocessing.png" alt="Preprocessing" width="738">
+</p>
 <section id="step-1-transforming-elan-to-srt-files">
 <h3>Step 1: Transforming ELAN to SRT Files<a class="headerlink" href="#step-1-transforming-elan-to-srt-files" title="Permalink to this heading">#</a></h3>
-<p>The “<a class="reference external" href="http://transformEAFTtoSRT.py">transformEAFTtoSRT.py</a>” script aims to convert ELAN (EAF) files containing gloss annotations into SubRip (SRT) subtitle files and generate a vocabulary count. The script processes all ELAN files found in a specified folder and its subfolders. It reads the gloss annotations from the ELAN files and creates corresponding SRT subtitle files. The script also counts the occurrences of each gloss annotation and generates a vocabulary count, saving it to a CSV file named ‘glosas.csv’.</p>
+<p>The “transformEAFTtoSRT.py” script aims to convert ELAN (EAF) files containing gloss annotations into SubRip (SRT) subtitle files and generate a vocabulary count. The script processes all ELAN files found in a specified folder and its subfolders. It reads the gloss annotations from the ELAN files and creates corresponding SRT subtitle files. The script also counts the occurrences of each gloss annotation and generates a vocabulary count, saving it to a CSV file named ‘glosas.csv’.</p>
 </section>
 <section id="step-2-video-extraction">
 <h3>Step 2: Video Extraction<a class="headerlink" href="#step-2-video-extraction" title="Permalink to this heading">#</a></h3>
@@ -448,12 +457,13 @@ El archivo "move_videos.py" tiene como objetivo copiar archivos de video referen
 </pre></div>
 </div>
 </section>
-<section id="step-3-video-cropping">
-<h3>Step 3: Video Cropping<a class="headerlink" href="#step-3-video-cropping" title="Permalink to this heading">#</a></h3>
-<p>The “<a class="reference external" href="http://cropInterpreterBySRT.py">cropInterpreterBySRT.py</a>” script aims to segment and crop specific video segments based on the annotations provided in the SRT files. It reads the SRT files located in the path specified by “–srtPath” and uses the temporal information from the annotations to identify the start and end times of each segment of interest.</p>
-<p>The script utilizes the <code class="docutils literal notranslate"><span class="pre">pysrt</span></code> library to read the SRT files and extract the start and end times of each annotation. It then uses the <code class="docutils literal notranslate"><span class="pre">cv2</span></code> library to read the original videos located in the path specified by “–rawVideoPath”. For each segment identified in the SRT file, the script crops the corresponding original video, creating a new video that contains only the cropped segment. The segmented videos are saved in the path specified by “–outputVideoPath”.</p>
-<p>The script provides additional options to customize the segmentation, such as setting the width and height of the sign language interpreter in the segmented videos and cropping the video to include only a specific region of interest (using coordinates “x1”, “y1”, “width”, and “height”). Furthermore, the script allows for controlling the speed of the segmented videos (“fpsOutput”) and considering gestures in the output video’s filename.</p>
+<section id="step-3-video-segmentation-and-cropping">
+<h3>Step 3: Video Segmentation and Cropping<a class="headerlink" href="#step-3-video-segmentation-and-cropping" title="Permalink to this heading">#</a></h3>
+<p>The video segmentation and cropping process is a critical step for isolating specific segments from the original videos. To achieve this, we have developed the <code class="docutils literal notranslate"><span class="pre">cropInterpreterBySRT.py</span></code> script.</p>
+<p>This script is responsible for segmenting video segments based on annotations provided in SRT files. It extracts temporal information from the SRT files, allowing it to identify the start and end times of each segment of interest.</p>
+<p>The script then creates new videos with the timeframes desired for each isolated sign. Users have the flexibility to customize the segmentation, including setting the dimensions of the sign language interpreter (specifying a region of interest for cropping), and adjusting the speed of the segmented videos.</p>
 <p>It is important to ensure that the SRT files and corresponding video files are located in the paths specified by “–srtPath” and “–rawVideoPath,” respectively. It is assumed that these files are within the <a href="https://github.com/gissemari/PeruvianSignLanguage" target="_blank"><code class="docutils literal notranslate"><span class="pre">PeruvianSignLanguage</span></code></a> repository in the “Data” folder.</p>
+<p>For a more detailed guide on using this script and its various options, please refer to the <a class="reference external" href="https://github.com/Diccionario-LSP/Docs">Dictionary LSP Documentation</a>.</p>
 <!-- Paso 3: Recorte de los vídeos
 
 
@@ -542,7 +552,7 @@ Es importante tener en cuenta que para que el script funcione correctamente, es 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-preparation">Video Preparation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-transforming-elan-to-srt-files">Step 1: Transforming ELAN to SRT Files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-video-extraction">Step 2: Video Extraction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-video-cropping">Step 3: Video Cropping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-video-segmentation-and-cropping">Step 3: Video Segmentation and Cropping</a></li>
 </ul>
 </li>
 </ul>

@@ -2,11 +2,6 @@
 
 In this stage, both video preparation and the annotation of signs corresponding to the videos are performed, as shown in the following workflow.
 
-<p align="center">
-  <img src="./assets/Preprocessing.png" alt="Preprocessing" width="738">
-</p>
-
-
 ## Annotation of Signs
 
 For the annotation of videos, we utilized the ELAN video annotation tool, where previously agreed-upon glosses for the words described in each example sentence from the PUCP305 database were annotated. The PUCP305 database contains multiple examples of sentences, each containing several signs for different words. The task was to create an Isolated Sign Language (ISL) video database. The annotation of glosses, along with their corresponding timeframes, served as the basis for creating the ISL database, as illustrated in the image below. This task involved meticulous work from the entire linguistic team and the Deaf community to create a dataset that accurately represents how communication occurs within the community, requiring in-depth study to define the signs' glosses correctly.
@@ -19,6 +14,10 @@ For the annotation of videos, we utilized the ELAN video annotation tool, where 
 ## Video Preparation
 
 Video preparation involved using Python scripts for specific preprocessing tasks, divided into three stages: transforming EAF (ELAN files) into SRT files, extracting all videos from the unprocessed database, and then cropping them based on the timeframes indicated in the SRT files to generate each ISL video. Additionally, if needed, cropping was performed to include only the interpreter's location (used in previous databases, where the interpreter was not centered in the video, and the video contained content besides the interpreter).
+
+<p align="center">
+  <img src="./assets/Preprocessing.png" alt="Preprocessing" width="738">
+</p>
 
 ### Step 1: Transforming ELAN to SRT Files
 
@@ -67,15 +66,17 @@ PeruvianSignLanguage
 ```
 
 
-### Step 3: Video Cropping
+### Step 3: Video Segmentation and Cropping
 
-The "cropInterpreterBySRT.py" script aims to segment and crop specific video segments based on the annotations provided in the SRT files. It reads the SRT files located in the path specified by "--srtPath" and uses the temporal information from the annotations to identify the start and end times of each segment of interest.
+The video segmentation and cropping process is a critical step for isolating specific segments from the original videos. To achieve this, we have developed the `cropInterpreterBySRT.py` script. 
 
-The script utilizes the `pysrt` library to read the SRT files and extract the start and end times of each annotation. It then uses the `cv2` library to read the original videos located in the path specified by "--rawVideoPath". For each segment identified in the SRT file, the script crops the corresponding original video, creating a new video that contains only the cropped segment. The segmented videos are saved in the path specified by "--outputVideoPath".
+This script is responsible for segmenting video segments based on annotations provided in SRT files. It extracts temporal information from the SRT files, allowing it to identify the start and end times of each segment of interest.
 
-The script provides additional options to customize the segmentation, such as setting the width and height of the sign language interpreter in the segmented videos and cropping the video to include only a specific region of interest (using coordinates "x1", "y1", "width", and "height"). Furthermore, the script allows for controlling the speed of the segmented videos ("fpsOutput") and considering gestures in the output video's filename.
+The script then creates new videos with the timeframes desired for each isolated sign. Users have the flexibility to customize the segmentation, including setting the dimensions of the sign language interpreter (specifying a region of interest for cropping), and adjusting the speed of the segmented videos.
 
 It is important to ensure that the SRT files and corresponding video files are located in the paths specified by "--srtPath" and "--rawVideoPath," respectively. It is assumed that these files are within the <a href="https://github.com/gissemari/PeruvianSignLanguage" target="_blank">`PeruvianSignLanguage`</a> repository in the "Data" folder.
+
+For a more detailed guide on using this script and its various options, please refer to the [Dictionary LSP Documentation](https://github.com/Diccionario-LSP/Docs).
 
 <!-- Paso 3: Recorte de los vídeos
 

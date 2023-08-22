@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -109,6 +110,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content"><p class="announcement">
+The LSP dictionary documentation is currently under construction and improvement <span class="emoji">😊🚧</span>
+</p>
+</div>
+  </div>
+
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
     </nav>
@@ -174,8 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Inference.html">Inference</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="Inference.html">Model Deployment and Inference</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="Backend_SignSearch.html">Backend Implementation</a></li>
 </ul>
@@ -373,7 +382,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="sign-language-recognition-model-overview">
+  <section id="sign-language-recognition-model-overview">
 <h1>Sign Language Recognition Model Overview<a class="headerlink" href="#sign-language-recognition-model-overview" title="Permalink to this heading">#</a></h1>
 <p>For the SLR model training stage, a pre-existing model developed by Matyáš Boháček and Marek Hrúz from the <a href="https://github.com/matyasbohacek/spoter" target="_blank"><code class="docutils literal notranslate"><span class="pre">SPOTER</span></code></a> repository was used as a starting point. However, several modifications were made to adapt the model to the specific dataset being worked on.</p>
 <p>The following files were modified:</p>
@@ -388,7 +397,7 @@ document.write(`
 <p align="center">
   <img src="./assets/SPOTER.png" alt="SPOTER" width="738">
 </p>
-<p>It is important to note that while the SLR model is based on the SPOTER repository, the modifications and adaptations mentioned above were essential to ensure its suitability for the specific sign language dataset being used in the project.</p>
+<p>It is important to note that while the SLR model is based on the SPOTER repository, the modifications and adaptations mentioned above were essential to ensure its suitability for the specific sign language dataset being used in the project. Details about the implementation of our adaptation of SPOTER model is in the <a href="https://github.com/Diccionario-LSP/Spoter-LSP-IA-Model" target="_blank"><code class="docutils literal notranslate"><span class="pre">Spoter-LSP-IA-Model</span></code></a> repository.</p>
 </section>
 
     <script type="text/x-thebe-config">

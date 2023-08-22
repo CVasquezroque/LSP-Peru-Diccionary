@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -64,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Backend_TextSearch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Inference" href="Inference.html" />
+    <link rel="next" title="Model Deployment and Inference" href="Inference.html" />
     <link rel="prev" title="Data Processing and Upload Workflow" href="Deploy_TextSearch.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -109,6 +110,15 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content"><p class="announcement">
+The LSP dictionary documentation is currently under construction and improvement <span class="emoji">😊🚧</span>
+</p>
+</div>
+  </div>
+
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
     </nav>
@@ -174,8 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sign Search</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Inference.html">Inference</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="Inference.html">Model Deployment and Inference</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="Backend_SignSearch.html">Backend Implementation</a></li>
 </ul>
@@ -391,7 +400,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="backend-implementation">
+  <section id="backend-implementation">
 <h1>Backend Implementation<a class="headerlink" href="#backend-implementation" title="Permalink to this heading">#</a></h1>
 <p>In order to establish backend connections between the web application and the Text Search functionalities, a connection between AWS DynamoDB services and the web was essential. This was achieved by utilizing AWS Lambda, allowing the creation of a defined trigger (in this case, a text search). When this trigger is invoked, the Lambda function is called, which then directs the request to DynamoDB. Notably, two distinct text search situations had to be considered during implementation. The first is a direct text search, and the second is a “text search by sign,” where the AI’s prediction result from the sign search is used to search DynamoDB for the corresponding example video.</p>
 <section id="aws-lambda-implementation">
@@ -498,7 +507,7 @@ module.exports.buildIAResultsQuery = (word) =&gt; word?{
 <li><p>CORS: Yes</p></li>
 <li><p>Detailed metrics enabled: No</p></li>
 <li><p>Method: ANY</p></li>
-<li><p>Service principal: <a class="reference external" href="http://apigateway.amazonaws.com">apigateway.amazonaws.com</a></p></li>
+<li><p>Service principal: apigateway.amazonaws.com</p></li>
 <li><p>Stage: $default</p></li>
 </ul>
 <!-- The "Text Search" feature resides within its dedicated directory named [`text-search`](https://github.com/JoeNatan30/SpanishToPSLTranslationService/tree/main/website/dev_stratlabs/src/features/text-search), which encapsulates all the necessary components, views, routes, and services required for text-based searches. The directory consists of three primary sections: *components*, *views*, and *support files*. The components folder contains reusable UI elements, particularly hosts the component required for text search by the AI result. While the views folder houses the [`TextSearch.jsx`](https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/text-search/views/TextSearch.jsx) where users interact with the [search functionality](https://dvlsp.link/search-by-text). The feature's routes are defined in [`text-search.routes.js`](https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/text-search/text-search.routes.js), ensuring seamless navigation. Furthermore, the feature leverages [`text-search.services.js`](https://github.com/JoeNatan30/SpanishToPSLTranslationService/blob/main/website/dev_stratlabs/src/features/text-search/text-search.services.js) to manage the logic for performing text searches. This structured organization promotes code reusability, encourages a clean separation of functionalities, and simplifies collaborative development efforts.
@@ -618,7 +627,7 @@ Both query building functions accept a 'word' parameter and use it to create a q
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Inference</p>
+        <p class="prev-next-title">Model Deployment and Inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
