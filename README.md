@@ -4,12 +4,13 @@
 <img src="docs/assets/banner2.png" width="100%">
 </p> -->
 <p align="center">
-<img src="docs/assets/banner_animation_v2.gif" width="100%">
+<!-- <img src="docs/assets/banner_animation_v2.gif" width="100%"> -->
+<img src="https://github.com/Diccionario-LSP/Docs/blob/main/docs/assets/banner_animation_v2.gif" width="100%">
 </p>
 
 
 [📚Documentation](https://diccionario-lsp.github.io/Docs/README.html) |
-[✌️Dictionary LSP](https://www.dvlsp.link)
+[✌️Dictionary LSP](https://www.dvlsp.link) | 
 [🗃️Peruvian Database](https://drive.google.com/drive/folders/1-DZjxfWbwWhDerW2M5lRFjjR5KC7TWTX?usp=sharing)
 
 
